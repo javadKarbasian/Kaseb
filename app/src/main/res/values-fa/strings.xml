@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">مشتری مدار</string>
+    <string name="app_name">کاسب</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">باز کردن راهنما</string>
+    <string name="navigation_drawer_close">بستن راهنما</string>
 
     <string name="action_settings">تنظیمات</string>
     <string name="kaseb_hadith">کاسب حبیب خداست</string>
@@ -14,4 +14,7 @@
     <string name="title_products">محصولات</string>
     <string name="title_setting">تنظیمات</string>
     <string name="title_about_us">درباره ما</string>
+    <string name="title_Debtors">بدهکاران</string>
+    <string name="title_activity_customers">مشتریان</string>
+    <string name="title_invoice">فاکتورها</string>
 </resources>
