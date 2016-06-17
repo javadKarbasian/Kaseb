@@ -1,2 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">مشتری مدار</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">تنظیمات</string>
+    <string name="kaseb_hadith">کاسب حبیب خداست</string>
+    <string name="kaseb_name" >علی قربانی</string>
+    <string name="title_customer">مشتریان</string>
+    <string name="title_debtors">بدهکاران</string>
+    <string name="title_sales">فروشها</string>
+    <string name="title_costs">هزینه ها</string>
+    <string name="title_products">محصولات</string>
+    <string name="title_setting">تنظیمات</string>
+    <string name="title_about_us">درباره ما</string>
+</resources>
