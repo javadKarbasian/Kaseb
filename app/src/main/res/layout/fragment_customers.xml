@@ -9,5 +9,8 @@
     tools:context="mjkarbasian.moshtarimadar.CustomersFragment"
     tools:showIn="@layout/activity_customers">
 
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Hello my Girl"/>
 </RelativeLayout>
