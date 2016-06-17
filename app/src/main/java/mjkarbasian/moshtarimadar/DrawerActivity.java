@@ -1,5 +1,6 @@
 package mjkarbasian.moshtarimadar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -79,9 +80,12 @@ public class DrawerActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Intent intent;
 
         if (id == R.id.nav_customers) {
             // Handle the camera action
+            intent = new Intent(this,Customers.class);
+            startActivity(intent);
         } else if (id == R.id.nav_debtors) {
 
         } else if (id == R.id.nav_sales) {
