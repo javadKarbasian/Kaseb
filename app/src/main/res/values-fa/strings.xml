@@ -17,4 +17,9 @@
     <string name="title_Debtors">بدهکاران</string>
     <string name="title_activity_customers">مشتریان</string>
     <string name="title_invoice">فاکتورها</string>
+    <string name="label_total_customer_debt">بدهی</string>
+    <string name="label_total_customer_sale">خرید</string>
+    <string name="label_total_sale">کل فروش</string>
+    <string name="sample_text_debt_of_customer_amount">800</string>
+    <string name="sample_text_purchase_of_customer_amount">1500000</string>
 </resources>

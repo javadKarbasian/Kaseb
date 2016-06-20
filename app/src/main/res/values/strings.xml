@@ -17,4 +17,9 @@
     <string name="title_setting">Setting</string>
     <string name="title_about_us">About us</string>
     <string name="title_activity_customers">Customers</string>
+    <string name="label_total_sale">Total Sale($)</string>
+    <string name="label_total_customer_sale">Purchase</string>
+    <string name="label_total_customer_debt">Debt</string>
+    <string name="sample_text_debt_of_customer_amount">800</string>
+    <string name="sample_text_purchase_of_customer_amount">1500000</string>
 </resources>

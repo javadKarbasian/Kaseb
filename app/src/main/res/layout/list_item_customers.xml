@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_list_height"
+    android:layout_marginLeft="@dimen/item_horizontal_margin"
+    android:layout_marginStart="@dimen/item_horizontal_margin"
+    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    >
+
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/kaseb_pic"
+    />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/item_horizontal_margin"
+        android:layout_marginStart="@dimen/item_horizontal_margin"
+        >
+        <TextView
+            android:id="@+id/item_list_kaseb_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kaseb_name"
+            />
+        <RatingBar
+            android:id="@+id/item_list_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style = "?android:attr/ratingBarStyleSmall"
+            android:numStars = "5"
+            android:layout_marginTop="@dimen/activity_vertical_margin" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/item_horizontal_margin"
+        android:layout_marginStart="@dimen/item_horizontal_margin"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_phone"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:src="@drawable/message"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/item_horizontal_large_margin"
+        android:layout_marginStart="@dimen/item_horizontal_large_margin"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_total_customer_sale"
+            />
+        <TextView
+            android:id="@+id/item_list_purchase_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/sample_text_purchase_of_customer_amount"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/item_horizontal_large_margin"
+        android:layout_marginStart="@dimen/item_horizontal_large_margin"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/item_list_debt_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_total_customer_debt"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/sample_text_debt_of_customer_amount"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
