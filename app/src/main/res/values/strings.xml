@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/tools">
     <string name="app_name">Kaseb</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -18,8 +18,12 @@
     <string name="title_about_us">About us</string>
     <string name="title_activity_customers">Customers</string>
     <string name="label_total_sale">Total Sale($)</string>
-    <string name="label_total_customer_sale">Purchase</string>
+    <string name="label_total_customer_purchase">Purchase</string>
     <string name="label_total_customer_debt">Debt</string>
     <string name="sample_text_debt_of_customer_amount">800</string>
-    <string name="sample_text_purchase_of_customer_amount">1500000</string>
+    <string name="sample_text_purchase_of_customer_amount">1,500,000</string>
+    <string name="sample_ali_ghorbani">Ali Ghorbani</string>
+    <string name="sample_mohammad_alikhani">Mohammad AliKhani</string>
+    <string name="sample_sima_saberzadeh">Sima Saberzadeh</string>
+    <string name="format_purchase_amount"><xliff:g id="purchase_amount">%1$s</xliff:g> $</string>
 </resources>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/tools">
     <string name="app_name">کاسب</string>
 
     <string name="navigation_drawer_open">باز کردن راهنما</string>
@@ -18,8 +18,13 @@
     <string name="title_activity_customers">مشتریان</string>
     <string name="title_invoice">فاکتورها</string>
     <string name="label_total_customer_debt">بدهی</string>
-    <string name="label_total_customer_sale">خرید</string>
+    <string name="label_total_customer_purchase">خرید</string>
     <string name="label_total_sale">کل فروش</string>
     <string name="sample_text_debt_of_customer_amount">800</string>
-    <string name="sample_text_purchase_of_customer_amount">1500000</string>
+    <string name="sample_text_purchase_of_customer_amount">1,500,000</string>
+    <string name="sample_ali_ghorbani">علی قربانی</string>
+    <string name="sample_mohammad_alikhani">محمد علی خانی</string>
+    <string name="sample_sima_saberzadeh">سیما صابرزاده</string>
+    <string name="format_purchase_amount"><xliff:g id="purchase_amount">%1$s</xliff:g> ریال</string>
+
 </resources>

@@ -1,106 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="72dp"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/item_list_height"
-    android:layout_marginLeft="@dimen/item_horizontal_margin"
-    android:layout_marginStart="@dimen/item_horizontal_margin"
-    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingRight="4dp"
+    android:paddingEnd="4dp"
     >
-
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+     >
     <ImageView
-            android:layout_width="50dp"
-            android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:src="@drawable/kaseb_pic"
     />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/item_horizontal_margin"
-        android:layout_marginStart="@dimen/item_horizontal_margin"
-        >
-        <TextView
-            android:id="@+id/item_list_kaseb_name"
-            android:layout_width="wrap_content"
+    <TextView
+            android:id="@+id/item_list_customer_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="center"
             android:text="@string/kaseb_name"
+            android:layout_marginLeft="@dimen/item_horizontal_margin"
+            android:layout_marginStart="@dimen/item_horizontal_margin"
+            android:fontFamily="sans-serif-condensed"
+            android:maxLength="14"
+            android:textAppearance="?android:textAppearanceMedium"
             />
-        <RatingBar
-            android:id="@+id/item_list_rating_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style = "?android:attr/ratingBarStyleSmall"
-            android:numStars = "5"
-            android:layout_marginTop="@dimen/activity_vertical_margin" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/item_horizontal_margin"
-        android:layout_marginStart="@dimen/item_horizontal_margin"
-        android:orientation="vertical">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_phone"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:src="@drawable/message"
-        />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/item_horizontal_large_margin"
-        android:layout_marginStart="@dimen/item_horizontal_large_margin"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_total_customer_sale"
-            />
-        <TextView
+
+    <TextView
             android:id="@+id/item_list_purchase_amount"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/item_horizontal_margin"
+            android:layout_marginStart="@dimen/item_horizontal_margin"
+            android:layout_weight="3"
             android:text="@string/sample_text_purchase_of_customer_amount"
+            android:fontFamily="sans-serif-condensed"
+            android:textAppearance="?android:textAppearanceLarge"
             />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/item_list_customer_state"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:onClick="fab_customers"
+        android:padding="3dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/item_horizontal_large_margin"
-        android:layout_marginStart="@dimen/item_horizontal_large_margin"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/item_list_debt_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_total_customer_debt"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/sample_text_debt_of_customer_amount"
-            />
-    </LinearLayout>
-
-
+        android:gravity="end"
+        android:layout_weight="1"
+        android:src="@drawable/star"
+        android:tint="@color/colorAccent"
+        />
 </LinearLayout>
+</FrameLayout>
