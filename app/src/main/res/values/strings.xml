@@ -26,4 +26,11 @@
     <string name="sample_mohammad_alikhani">Mohammad AliKhani</string>
     <string name="sample_sima_saberzadeh">Sima Saberzadeh</string>
     <string name="format_purchase_amount"><xliff:g id="purchase_amount">%1$s</xliff:g> $</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">Search customers</string>
+    <string name="sort_alphabetic">Alphabetic</string>
+    <string name="sort_membership">Membership</string>
+    <string name="sort_title">Sort</string>
+    <string name="fab_add_sale">Add sale</string>
+    <string name="fab_add_customer">Add customer</string>
 </resources>

@@ -26,5 +26,12 @@
     <string name="sample_mohammad_alikhani">محمد علی خانی</string>
     <string name="sample_sima_saberzadeh">سیما صابرزاده</string>
     <string name="format_purchase_amount"><xliff:g id="purchase_amount">%1$s</xliff:g> ریال</string>
+    <string name="search_hint">جستجوی مشتریان</string>
+    <string name="search_title">جستجو</string>
+    <string name="sort_alphabetic">الفبا</string>
+    <string name="sort_membership">عضویت</string>
+    <string name="sort_title">چینش</string>
+    <string name="fab_add_customer">افزودن مشتری</string>
+    <string name="fab_add_sale">افزودن فروش</string>
 
 </resources>
