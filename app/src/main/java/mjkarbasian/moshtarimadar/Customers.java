@@ -30,8 +30,8 @@ public class Customers extends DrawerActivity {
     }
 
     public void fab_customers(View v){
-        Snackbar.make(v, "Replace your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+//        Snackbar.make(v, "Replace your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show();
         PopupMenu popup = new PopupMenu(this,v);
         popup.getMenu().add(R.string.fab_add_customer);
         popup.getMenu().add(R.string.fab_add_sale);
