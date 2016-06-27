@@ -8,4 +8,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="item_horizontal_margin">16dp</dimen>
     <dimen name="item_horizontal_large_margin">32dp</dimen>
+    <dimen name="activity_vertical_Large_margin">24dp</dimen>
+    <dimen name="debate_table_cell_height">40dp</dimen>
 </resources>

@@ -6,4 +6,11 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+    <style name="debator_table_cell_text">
+        <item name="android:layout_height">@dimen/debate_table_cell_height</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>
+

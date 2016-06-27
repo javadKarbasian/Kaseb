@@ -16,5 +16,11 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="debator_table_cell_text">
+        <item name="android:layout_height">@dimen/debate_table_cell_height</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:gravity">center</item>
+    </style>
 
 </resources>
