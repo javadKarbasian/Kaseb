@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:id="@+id/card_linear_layout"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="mjkarbasian.moshtarimadar.Debators">
 <LinearLayout
     android:id="@+id/debator_section"
     android:layout_height="wrap_content"
@@ -17,16 +17,15 @@ android:orientation="vertical"
     >
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_weight="1"
-
         android:src="@drawable/kaseb_pic"
         />
     <TextView
-        android:id="@+id/item_list_customer_name"
-        android:layout_width="wrap_content"
+        android:id="@+id/item_card_debator_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_gravity="center_vertical"
         android:text="@string/kaseb_name"
         android:layout_marginLeft="@dimen/item_horizontal_margin"
@@ -37,7 +36,7 @@ android:orientation="vertical"
         android:textAppearance="?android:textAppearanceMedium"
         />
     <TextView
-        android:id="@+id/item_list_purchase_amount"
+        android:id="@+id/item_card_balance_amount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -52,8 +51,10 @@ android:orientation="vertical"
 
 </LinearLayout>
 <TableLayout
+    android:id="@+id/table_balance_debators"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:layout_marginTop="@dimen/activity_vertical_Large_margin"
     android:layout_marginRight="8dp"
     android:layout_marginEnd="8dp"
@@ -74,57 +75,57 @@ android:orientation="vertical"
             android:id="@+id/column_title_settlement"
             android:text="@string/column_title_day_of_maturity"
             style="@style/debator_table_cell_text"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
         <TextView
             android:id="@+id/column_title_account_ballance"
             android:text="@string/column_title_account_balance"
             style="@style/debator_table_cell_text"
             android:layout_weight="2"/>
     </TableRow>
-    <TableRow
-        android:padding="3dp"
-        android:layout_marginTop="4dp"
-        >
-        <TextView
-            android:id="@+id/code_1_invoice"
-            style="@style/debator_table_cell_text"
-            android:layout_weight="1"
-            android:text="@string/sample_invoice_code"/>
+    <!--<TableRow-->
+        <!--android:padding="3dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!-->-->
+        <!--<TextView-->
+            <!--android:id="@+id/code_1_invoice"-->
+            <!--style="@style/debator_table_cell_text"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="@string/sample_invoice_code"/>-->
 
-        <TextView
-            android:id="@+id/due_date_1_day"
-            style="@style/debator_table_cell_text"
-            android:layout_weight="1"
-            android:text="@string/sample_due_date_1_day"/>
+        <!--<TextView-->
+            <!--android:id="@+id/due_date_1_day"-->
+            <!--style="@style/debator_table_cell_text"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="@string/sample_due_date_1_day"/>-->
 
-        <TextView
-            android:id="@+id/balance_1_ammount"
-            style="@style/debator_table_cell_text"
-            android:layout_weight="2"
-            android:text="@string/sample_invoice_ballance"/>
-    </TableRow>
-    <TableRow
-        android:padding="3dp"
-        android:layout_marginTop="4dp"
-        >
-        <TextView
-            android:id="@+id/code_2_invoice"
-            style="@style/debator_table_cell_text"
-            android:layout_weight="1"
-            android:text="@string/sample_2_invoice_code"/>
+        <!--<TextView-->
+            <!--android:id="@+id/balance_1_ammount"-->
+            <!--style="@style/debator_table_cell_text"-->
+            <!--android:layout_weight="2"-->
+            <!--android:text="@string/sample_invoice_ballance"/>-->
+    <!--</TableRow>-->
+    <!--<TableRow-->
+        <!--android:padding="3dp"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!-->-->
+        <!--<TextView-->
+            <!--android:id="@+id/code_2_invoice"-->
+            <!--style="@style/debator_table_cell_text"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="@string/sample_2_invoice_code"/>-->
 
-        <TextView
-            android:id="@+id/due_date_2_day"
-            style="@style/debator_table_cell_text"
-            android:layout_weight="1"
-            android:text="@string/sample_due_date_2_day"/>
+        <!--<TextView-->
+            <!--android:id="@+id/due_date_2_day"-->
+            <!--style="@style/debator_table_cell_text"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="@string/sample_due_date_2_day"/>-->
 
-        <TextView
-            android:id="@+id/balance_2_ammount"
-            style="@style/debator_table_cell_text"
-            android:layout_weight="2"
-            android:text="@string/sample_invoice_2_ballance"/>
-    </TableRow>
+        <!--<TextView-->
+            <!--android:id="@+id/balance_2_ammount"-->
+            <!--style="@style/debator_table_cell_text"-->
+            <!--android:layout_weight="2"-->
+            <!--android:text="@string/sample_invoice_2_ballance"/>-->
+    <!--</TableRow>-->
 
 </TableLayout>
 
@@ -142,22 +143,30 @@ android:orientation="vertical"
     android:layout_marginTop="4dp"
     android:orientation="horizontal"
     android:divider="@drawable/divider_list"
-    android:showDividers="middle">
+    android:showDividers="middle"
+    android:clickable="true"
+    >
     <ImageView
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="32dp"
+        android:clickable="true"
+        android:onClick="call_debator"
+        android:layout_height="28dp"
         android:src="@drawable/ic_phone"
         />
     <ImageView
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="32dp"
+        android:clickable="true"
+        android:onClick="message_dabator"
+        android:layout_height="28dp"
         android:src="@drawable/message"
         />
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_height="28dp"
+        android:clickable="true"
+        android:onClick="share_dabator"
         android:layout_weight="1"
         android:src="@drawable/share_variant"/>
 </LinearLayout>

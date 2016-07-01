@@ -1,4 +1,4 @@
-package mjkarbasian.moshtarimadar;
+package mjkarbasian.moshtarimadar.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -21,6 +21,10 @@ import java.util.Currency;
 import java.util.Locale;
 import java.util.zip.Inflater;
 
+import mjkarbasian.moshtarimadar.CustomerSamples;
+import mjkarbasian.moshtarimadar.R;
+import mjkarbasian.moshtarimadar.Utility;
+
 import static mjkarbasian.moshtarimadar.R.color.colorAccent;
 import static mjkarbasian.moshtarimadar.R.color.colorPrimary;
 import static mjkarbasian.moshtarimadar.R.color.colorWhite;
@@ -38,12 +42,12 @@ public class CustomerAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return customerName.length;
+        return CustomerSamples.customerName.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return customerName[position];
+        return CustomerSamples.customerName[position];
     }
 
     @Override
@@ -60,17 +64,17 @@ public class CustomerAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.list_item_customers,parent,false);
         }
         TextView customerNameText = (TextView)view.findViewById(R.id.item_list_customer_name);
-        customerNameText.setText(mContext.getString(customerName[position]));
+        customerNameText.setText(mContext.getString(CustomerSamples.customerName[position]));
 //        RatingBar customerRate = (RatingBar) view.findViewById(R.id.item_list_rating_bar);
 //        customerRate.setRating(customerRating[position]);
         TextView customerPurchaseAmountText =(TextView)view.findViewById(R.id.item_list_purchase_amount);
         DecimalFormat format = new DecimalFormat();
         format.setDecimalSeparatorAlwaysShown(true);
-        String purchaseAmount =(String)format.format(customerPurchaseAmount[position]);
-        purchaseAmount = Utility.formatPurchase(mContext,purchaseAmount );
+        String purchaseAmount =(String)format.format(CustomerSamples.customerPurchaseAmount[position]);
+        purchaseAmount = Utility.formatPurchase(mContext, purchaseAmount);
         customerPurchaseAmountText.setText(purchaseAmount);
         ImageView customerState =(ImageView)view.findViewById(R.id.item_list_customer_state);
-        setCustomerState(customerState,customerPurchaseAmount[position]);
+        setCustomerState(customerState, CustomerSamples.customerPurchaseAmount[position]);
         return view;
     }
 
@@ -82,11 +86,7 @@ public class CustomerAdapter extends BaseAdapter {
     }
 
     //Dummy data references;
-    private Integer[] customerName = {R.string.sample_ali_ghorbani,R.string.sample_mohammad_alikhani,R.string.sample_sima_saberzadeh};
-    private Float[]customerRating = new Float[]{4.4f,3.2f,2.5f};
-    private String[] customerPhoneNumber={"09124383454","09121343254","09122515237"};
-    private double[] customerPurchaseAmount ={5590000,8320000,732000};
-    private String[] customerDebtAmount={"0","455,000","100,000"};
+
 
 
 }

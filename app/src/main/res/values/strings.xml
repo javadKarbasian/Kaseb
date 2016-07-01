@@ -42,4 +42,5 @@
     <string name="sample_2_invoice_code">13120</string>
     <string name="sample_due_date_2_day">8/27/16</string>
     <string name="sample_invoice_2_ballance">300000</string>
+    <string name="title_debator">Debators</string>
 </resources>

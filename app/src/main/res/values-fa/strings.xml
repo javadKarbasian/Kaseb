@@ -42,5 +42,6 @@
     <string name="sample_invoice_code">12420</string>
     <string name="sample_due_date_2_day">95/10/15</string>
     <string name="sample_2_invoice_code">13120</string>
+    <string name="title_debator">بدهکاران</string>
 
 </resources>
