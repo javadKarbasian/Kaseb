@@ -2,32 +2,18 @@ package mjkarbasian.moshtarimadar.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Currency;
-import java.util.Locale;
-import java.util.zip.Inflater;
 
 import mjkarbasian.moshtarimadar.CustomerSamples;
 import mjkarbasian.moshtarimadar.R;
-import mjkarbasian.moshtarimadar.Utility;
-
-import static mjkarbasian.moshtarimadar.R.color.colorAccent;
-import static mjkarbasian.moshtarimadar.R.color.colorPrimary;
-import static mjkarbasian.moshtarimadar.R.color.colorWhite;
+import mjkarbasian.moshtarimadar.helper.Utility;
 
 
 /**

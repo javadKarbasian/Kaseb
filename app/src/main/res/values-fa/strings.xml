@@ -43,5 +43,6 @@
     <string name="sample_due_date_2_day">95/10/15</string>
     <string name="sample_2_invoice_code">13120</string>
     <string name="title_debator">بدهکاران</string>
+    <string name="debtor_share_text_to_send">مجموع بدهی شما برابر است با: </string>
 
 </resources>

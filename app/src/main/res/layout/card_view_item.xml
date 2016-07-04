@@ -13,7 +13,10 @@
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginStart="@dimen/activity_horizontal_margin"
     android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:padding="2dp"
     android:orientation="horizontal"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground"
     >
     <ImageView
         android:layout_width="0dp"
@@ -68,18 +71,18 @@
         <TextView
             android:id="@+id/column_title_invoice_code"
             android:text="@string/column_title_Bill_code"
-            style="@style/debator_table_cell_text"
+            style="@style/debator_table_header_text"
             android:layout_weight="1"
             ></TextView>
         <TextView
             android:id="@+id/column_title_settlement"
             android:text="@string/column_title_day_of_maturity"
-            style="@style/debator_table_cell_text"
+            style="@style/debator_table_header_text"
             android:layout_weight="2"/>
         <TextView
             android:id="@+id/column_title_account_ballance"
             android:text="@string/column_title_account_balance"
-            style="@style/debator_table_cell_text"
+            style="@style/debator_table_header_text"
             android:layout_weight="2"/>
     </TableRow>
     <!--<TableRow-->
@@ -145,28 +148,40 @@
     android:divider="@drawable/divider_list"
     android:showDividers="middle"
     android:clickable="true"
+    android:background="?attr/selectableItemBackground"
     >
     <ImageView
+        android:id="@+id/debtor_call"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:clickable="true"
         android:onClick="call_debator"
+        android:padding="2dp"
         android:layout_height="28dp"
         android:src="@drawable/ic_phone"
+        android:background="?attr/selectableItemBackground"
+
         />
     <ImageView
+        android:id="@+id/debtor_message"
         android:layout_width="0dp"
+        android:padding="2dp"
         android:layout_weight="1"
         android:clickable="true"
         android:onClick="message_dabator"
         android:layout_height="28dp"
         android:src="@drawable/message"
+        android:background="?attr/selectableItemBackground"
+
         />
     <ImageView
+        android:id="@+id/debtor_share"
         android:layout_width="0dp"
         android:layout_height="28dp"
+        android:padding="2dp"
         android:clickable="true"
         android:onClick="share_dabator"
+        android:background="?attr/selectableItemBackground"
         android:layout_weight="1"
         android:src="@drawable/share_variant"/>
 </LinearLayout>
