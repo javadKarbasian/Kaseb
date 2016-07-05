@@ -85,52 +85,19 @@
             style="@style/debator_table_header_text"
             android:layout_weight="2"/>
     </TableRow>
-    <!--<TableRow-->
-        <!--android:padding="3dp"-->
-        <!--android:layout_marginTop="4dp"-->
-        <!-->-->
-        <!--<TextView-->
-            <!--android:id="@+id/code_1_invoice"-->
-            <!--style="@style/debator_table_cell_text"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="@string/sample_invoice_code"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/due_date_1_day"-->
-            <!--style="@style/debator_table_cell_text"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="@string/sample_due_date_1_day"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/balance_1_ammount"-->
-            <!--style="@style/debator_table_cell_text"-->
-            <!--android:layout_weight="2"-->
-            <!--android:text="@string/sample_invoice_ballance"/>-->
-    <!--</TableRow>-->
-    <!--<TableRow-->
-        <!--android:padding="3dp"-->
-        <!--android:layout_marginTop="4dp"-->
-        <!-->-->
-        <!--<TextView-->
-            <!--android:id="@+id/code_2_invoice"-->
-            <!--style="@style/debator_table_cell_text"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="@string/sample_2_invoice_code"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/due_date_2_day"-->
-            <!--style="@style/debator_table_cell_text"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="@string/sample_due_date_2_day"/>-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/balance_2_ammount"-->
-            <!--style="@style/debator_table_cell_text"-->
-            <!--android:layout_weight="2"-->
-            <!--android:text="@string/sample_invoice_2_ballance"/>-->
-    <!--</TableRow>-->
-
 </TableLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ListView
+        android:id="@+id/list_view_debtor_history"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/divider_list"
+        ></ListView>
+</LinearLayout>
 
 <View
     android:layout_width="fill_parent"

@@ -3,61 +3,72 @@ package mjkarbasian.moshtarimadar.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
+import mjkarbasian.moshtarimadar.CustomerSamples;
 import mjkarbasian.moshtarimadar.R;
 
 import static mjkarbasian.moshtarimadar.CustomerSamples.customerDebateBalance;
 import static mjkarbasian.moshtarimadar.CustomerSamples.customerName;
 import static mjkarbasian.moshtarimadar.CustomerSamples.debatorName;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debtorBalance;
 import static mjkarbasian.moshtarimadar.CustomerSamples.debtorsCode;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debtorsCodeNums;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debtorsDue;
 import static mjkarbasian.moshtarimadar.CustomerSamples.debtorsMobileNumber;
-import static mjkarbasian.moshtarimadar.helper.Utility.DecimalSeperation;
-import static mjkarbasian.moshtarimadar.helper.Utility.JalaliDatePicker;
-import static mjkarbasian.moshtarimadar.helper.Utility.dipConverter;
-import static mjkarbasian.moshtarimadar.helper.Utility.doubleFormatter;
 import static mjkarbasian.moshtarimadar.helper.Utility.formatPurchase;
-import static mjkarbasian.moshtarimadar.helper.Utility.getLocale;
 
 /**
  * Created by family on 6/27/2016.
  */
-public class DebatorAdapter extends BaseAdapter {
+public class DebatorAdapter extends BaseExpandableListAdapter {
     Context mContext;
     public DebatorAdapter(Context context){
         mContext = context;
     }
+
     @Override
-    public int getCount() {
-        return debatorName.length;
+    public int getGroupCount() {
+        return CustomerSamples.debatorName.length;
     }
 
     @Override
-    public Object getItem(int position) {
-        return debatorName[position];
+    public int getChildrenCount(int groupPosition) {
+        return CustomerSamples.debtorsCode[groupPosition].length;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public Object getGroup(int groupPosition) {
+        return debatorName[groupPosition];
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public Object getChild(int groupPosition, int childPosition) {
+        return debtorsCode[groupPosition][childPosition];
+    }
+
+    @Override
+    public long getGroupId(int groupPosition) {
+        return 0;
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return 0;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return false;
+    }
+
+    @Override
+    public View getGroupView(final int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+
         LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = convertView;
@@ -69,78 +80,21 @@ public class DebatorAdapter extends BaseAdapter {
 
 
         TextView debatorNameText = (TextView)view.findViewById(R.id.item_card_debator_name);
-        debatorNameText.setText(mContext.getString(customerName[position]));
+        debatorNameText.setText(mContext.getString(customerName[groupPosition]));
 
         TextView debatorBalanceText =(TextView)view.findViewById(R.id.item_card_balance_amount);
         DecimalFormat format = new DecimalFormat();
         format.setDecimalSeparatorAlwaysShown(true);
-        String balanceAmount =(String)format.format(customerDebateBalance[position]);
+        String balanceAmount =(String)format.format(customerDebateBalance[groupPosition]);
         balanceAmount = formatPurchase(mContext, balanceAmount);
         debatorBalanceText.setText(balanceAmount);
-
-        TableLayout balanceTable = (TableLayout) view.findViewById(R.id.table_balance_debators);
-
-        for(int i = 0;i< debtorsCodeNums[position];i++)
-        {
-            //there is an if for a bug that shows row twice
-            if(balanceTable.getChildCount()<= debtorsCodeNums[position]){
-            TableRow tableRow = new TableRow(mContext);
-
-            //Table layout attrbute
-            TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(0, 4, 0, 0);
-            tableRow.setLayoutParams(layoutParams);
-
-            //Define row elements
-            TextView codeText = new TextView(mContext);
-            TextView dueText = new TextView(mContext);
-            TextView balanceText = new TextView(mContext);
-            codeText.setText(doubleFormatter(debtorsCode[position][i]));
-            if(!getLocale(mContext).equals("IR")){
-            dueText.setText(debtorsDue[position][i]);}
-            else {
-            dueText.setText(JalaliDatePicker(debtorsDue[position][i]));
-            }
-            balanceText.setText(DecimalSeperation(mContext, debtorBalance[position][i]));
-
-            //Layout attributes of table row element
-            codeText.setGravity(Gravity.CENTER);
-            dueText.setGravity(Gravity.CENTER);
-            balanceText.setGravity(Gravity.CENTER);
-
-                if (Build.VERSION.SDK_INT < 23) {
-                    codeText.setTextAppearance(mContext,R.style.debator_table_cell_text);
-                    dueText.setTextAppearance(mContext, R.style.debator_table_cell_text);
-                    balanceText.setTextAppearance(mContext,R.style.debator_table_cell_text);
-
-                }else {
-                    codeText.setTextAppearance(R.style.debator_table_cell_text);
-                    dueText.setTextAppearance(R.style.debator_table_cell_text);
-                    balanceText.setTextAppearance(R.style.debator_table_cell_text);
-
-                }
-
-            int height = dipConverter(40, mContext); // margin in pixels
-            TableRow.LayoutParams layoutParams1 = new  TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,height,1.0f);
-            TableRow.LayoutParams layoutParams2 = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height,1.0f);
-            TableRow.LayoutParams layoutParams3 = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, height,2.0f);
-            codeText.setLayoutParams(layoutParams1);
-            dueText.setLayoutParams(layoutParams2);
-            balanceText.setLayoutParams(layoutParams3);
-
-            //Adding views to parents
-            tableRow.addView(codeText);
-            tableRow.addView(dueText);
-            tableRow.addView(balanceText);
-            balanceTable.addView(tableRow);}
-        }
 
         //Card actions click handler
         ImageView phoneImage = (ImageView) view.findViewById(R.id.debtor_call);
         phoneImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", debtorsMobileNumber[position], null));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", debtorsMobileNumber[groupPosition], null));
                 mContext.startActivity(intent);
             }
         });
@@ -149,7 +103,7 @@ public class DebatorAdapter extends BaseAdapter {
         messageImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.fromParts("sms", debtorsMobileNumber[position], null));
+                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.fromParts("sms", debtorsMobileNumber[groupPosition], null));
                 mContext.startActivity(intent);
             }
         });
@@ -166,10 +120,35 @@ public class DebatorAdapter extends BaseAdapter {
                 mContext.startActivity(Intent.createChooser(intent, "Share with"));
             }
         });
+        return view;
+    }
+
+    @Override
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+
+        LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View view = convertView;
+
+        if(convertView==null)
+        {
+            view = inflater.inflate(R.layout.list_item_debtors_history,parent,false);
+        }
+        TextView codeText = (TextView)view.findViewById(R.id.debtor_history_invoice_code);
+        codeText.setText(Integer.toString((int)CustomerSamples.debtorsCode[groupPosition][childPosition]));
+
+        TextView dueText =(TextView) view.findViewById(R.id.debtor_history_due_date);
+        dueText.setText(CustomerSamples.debtorsDue[groupPosition][childPosition]);
+
+        TextView balanceText = (TextView) view.findViewById(R.id.debtor_history_balance);
+        balanceText.setText(Integer.toString((int) CustomerSamples.debtorBalance[groupPosition][childPosition]) );
 
         return view;
     }
 
-
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return true;
+    }
 }
 

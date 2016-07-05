@@ -7,21 +7,21 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
-import android.widget.ListView;
 
 import mjkarbasian.moshtarimadar.adapters.DebatorAdapter;
 
 public class Debators extends DrawerActivity {
     DebatorAdapter mDebatorAdapter;
-    ListView mListView;
+    ExpandableListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_debators);
         getLayoutInflater().inflate(R.layout.activity_debators,(FrameLayout)findViewById(R.id.container));
-        mListView =(ListView) findViewById(R.id.list_view_debators);
+        mListView =(ExpandableListView) findViewById(R.id.list_view_debators);
         mDebatorAdapter = new DebatorAdapter(this);
         mListView.setAdapter(mDebatorAdapter);
 
