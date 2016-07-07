@@ -1,5 +1,6 @@
 package mjkarbasian.moshtarimadar.adapters;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -84,14 +85,23 @@ public class DebatorAdapter extends BaseAdapter {
         {
             //there is an if for a bug that shows row twice
             if(balanceTable.getChildCount()<= debtorsCodeNums[position]){
-            TableRow tableRow = new TableRow(mContext);
+            final TableRow tableRow = new TableRow(mContext);
 
             //Table layout attrbute
             TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(0, 4, 0, 0);
             tableRow.setLayoutParams(layoutParams);
+            tableRow.setClickable(true);
+                tableRow.setOnClickListener(new View.OnClickListener() {
+                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void onClick(View v) {
 
-            //Define row elements
+                        tableRow.setBackground(mContext.getDrawable(R.drawable.list_ripple));
+                        
+                    }
+                });
+             //Define row elements
             TextView codeText = new TextView(mContext);
             TextView dueText = new TextView(mContext);
             TextView balanceText = new TextView(mContext);
