@@ -98,7 +98,7 @@ public class DebatorAdapter extends BaseAdapter {
                     public void onClick(View v) {
 
                         tableRow.setBackground(mContext.getDrawable(R.drawable.list_ripple));
-                        
+
                     }
                 });
              //Define row elements
