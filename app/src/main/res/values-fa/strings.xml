@@ -47,5 +47,8 @@
     <string name="sort_code">کد فروش</string>
     <string name="sort_date">تاریخ</string>
     <string name="sample_sale_code">کد-000123</string>
+    <string name="header_older">ماه جاری</string>
+    <string name="header_this_week">هفته جاری</string>
+    <string name="title_activity_sales">فروشها</string>
 
 </resources>

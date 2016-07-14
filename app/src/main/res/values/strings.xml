@@ -48,4 +48,6 @@
     <string name="sort_date">Date</string>
     <string name="sort_code">Sales code</string>
     <string name="sample_sale_code">INV-000123</string>
+    <string name="header_this_week">This week</string>
+    <string name="header_older">this month</string>
 </resources>
