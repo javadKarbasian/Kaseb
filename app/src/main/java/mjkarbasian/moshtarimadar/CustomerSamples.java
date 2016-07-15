@@ -1,6 +1,10 @@
 package mjkarbasian.moshtarimadar;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import mjkarbasian.moshtarimadar.helper.Utility;
 
 /**
  * Created by family on 6/27/2016.
@@ -26,6 +30,7 @@ public class CustomerSamples {
     public static String[] customerDebtAmount={"0","455,000","100,000"};
     public static String[] debtorsMobileNumber={"09124381232","09124543212"};
     public static ArrayList<String> salesCode = new ArrayList<String>();
+    public static ArrayList<String> salesDue = new ArrayList<String>();
     public static double[] salesAmount = {2000000,1190000,2400000,3200000,1100000,2000000,2020000,332000,400000};
     public static String[] products={"pr01","pr02","pr03","pr04","pr05"};
     public static double[] productsPrice={600000,900000,1200000,332000,400000};
@@ -34,16 +39,56 @@ public class CustomerSamples {
             {products[1],products[2]},{products[2]},{products[3],products[4]},{products[0]},{products[1]}};
     public static void setSalesCode(){
         salesCode.add("Inv-12430");
-        salesCode.add("Inv-13450");
-        salesCode.add("Inv-13900");
-        salesCode.add("Inv-10253");
-        salesCode.add("Inv-11276");
-        salesCode.add("Inv-13438");
-        salesCode.add("Inv-14864");
-        salesCode.add("Inv-14868");
-        salesCode.add("Inv-14900");
+        salesCode.add("Inv-12431");
+        salesCode.add("Inv-12432");
+        salesCode.add("Inv-12433");
+        salesCode.add("Inv-12434");
+        salesCode.add("Inv-12435");
+        salesCode.add("Inv-12436");
+        salesCode.add("Inv-12437");
+        salesCode.add("Inv-12438");
     }
+    public static void setSaleDueDate()
+    {
+        Calendar calendar = Calendar.getInstance();
+        //add today
+        Date today_time = calendar.getTime();
+        String today = Utility.formatDate(calendar);
+        salesDue.add(today);
+        //add today two hours ago
+        calendar.roll(Calendar.HOUR_OF_DAY, -2);
+        String todayTwoHourAgo = Utility.formatDate(calendar);
+        salesDue.add(todayTwoHourAgo);
+        //add yesterday;
+        calendar.roll(Calendar.DAY_OF_WEEK, -1);
+        String yesterday = Utility.formatDate(calendar);
+        salesDue.add(yesterday);
+        //add two days ago
+        calendar.roll(Calendar.DAY_OF_WEEK, -2);
+        String twoDaysAgo = Utility.formatDate(calendar);
+        salesDue.add(twoDaysAgo);
+        //add three days ago
+        calendar.roll(Calendar.DAY_OF_WEEK, -3);
+        String threeDaysAgo = Utility.formatDate(calendar);
+        salesDue.add(threeDaysAgo);
+        //add last weeks ago
+        calendar.roll(Calendar.WEEK_OF_MONTH,-2);
+        String lastWeek = Utility.formatDate(calendar);
+        salesDue.add(lastWeek);
+        //add last weeks 2 days ago
+        calendar.roll(Calendar.DAY_OF_WEEK,-2);
+        String lastWeekDays = Utility.formatDate(calendar);
+        salesDue.add(lastWeekDays);
+        //add last weeks 1 days ago
+        calendar.roll(Calendar.DAY_OF_WEEK,-1);
+        String lastWeek2Days = Utility.formatDate(calendar);
+        salesDue.add(lastWeek2Days);
+        //add last month and before
+        calendar.roll(Calendar.MONTH,-1);
+        String lastMonthDays = Utility.formatDate(calendar);
+        salesDue.add(lastMonthDays);
 
+    }
 
 }
 

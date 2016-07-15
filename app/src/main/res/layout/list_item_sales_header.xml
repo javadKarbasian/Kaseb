@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical" >
-
     <TextView
         android:id="@+id/header_list_sale"
         android:layout_width="fill_parent"
@@ -16,5 +15,4 @@
         android:background="@color/colorPrimaryLight"
         android:textStyle="bold"
         android:visibility="visible" />
-
 </LinearLayout>
