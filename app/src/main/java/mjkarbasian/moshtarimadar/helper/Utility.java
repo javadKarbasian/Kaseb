@@ -84,13 +84,13 @@ public class Utility {
 
     public static String formatDate(Calendar calendar){
 
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
         String formattedDate = df.format(calendar.getTime());
         return formattedDate;
     }
 
     public static boolean isToday(String date) throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
         Date day = df.parse(date);
         Calendar checkDay = Calendar.getInstance();
         Calendar thisDay = Calendar.getInstance();
@@ -108,7 +108,7 @@ public class Utility {
     }
 
     public static boolean isThisWeek(String date) throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
         Date day = df.parse(date);
         Calendar checkDay = Calendar.getInstance();
         Calendar thisDay = Calendar.getInstance();
@@ -121,7 +121,7 @@ public class Utility {
     }
 
     public static boolean isThisMonth(String date) throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
         Date day = df.parse(date);
         Calendar checkDay = Calendar.getInstance();
         Calendar thisDay = Calendar.getInstance();

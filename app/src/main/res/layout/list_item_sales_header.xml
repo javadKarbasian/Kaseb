@@ -12,5 +12,6 @@
         android:gravity="start"
         android:padding="8dp"
         android:textAppearance="?android:textAppearanceMedium"
+        android:background="@color/grey_background"
         android:visibility="visible" />
 </LinearLayout>

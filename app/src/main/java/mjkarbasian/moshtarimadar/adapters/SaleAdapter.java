@@ -75,7 +75,6 @@ public class SaleAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         int rowType = getItemViewType(position);
         View view = convertView;
-
             switch (rowType) {
                 case TYPE_ITEM:
                     view = mInflater.inflate(R.layout.list_item_sales, null);
@@ -85,9 +84,10 @@ public class SaleAdapter extends BaseAdapter {
                     TextView saleDue = (TextView)view.findViewById(R.id.item_list_sale_due_date);
                     customerName.setText(CustomerSamples.sales.get(2).get(CustomerSamples.sales.get(1).indexOf(mData.get(position))));
                     saleCode.setText(Utility.doubleFormatter(Integer.parseInt(mData.get(position))));
-                    saleAmount.setText(Utility.DecimalSeperation(mContext,Integer.parseInt(CustomerSamples.sales.get(3).get(CustomerSamples.sales.get(1).indexOf(mData.get(position))))));
-                    if(!(Utility.getLocale(mContext) =="IR")){
+                    saleAmount.setText(Utility.formatPurchase(mContext, Utility.DecimalSeperation(mContext, Integer.parseInt(CustomerSamples.sales.get(3).get(CustomerSamples.sales.get(1).indexOf(mData.get(position)))))));
+                    if(!(Utility.getLocale(mContext).equals("IR"))){
                         saleDue.setText(CustomerSamples.sales.get(0).get(CustomerSamples.sales.get(1).indexOf(mData.get(position))));
+
                     }
                     else{
                      saleDue.setText(Utility.JalaliDatePicker(CustomerSamples.sales.get(0).get(CustomerSamples.sales.get(1).indexOf(mData.get(position)))));

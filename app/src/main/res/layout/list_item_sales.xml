@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="72dp"
     android:layout_width="match_parent"
-    android:orientation="horizontal">
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="4dp"
+    android:paddingRight="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
     <LinearLayout
         android:layout_height="72dp"
         android:layout_width="0dp"
@@ -15,6 +22,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:text="@string/sample_ali_ghorbani"
             android:layout_marginLeft="@dimen/item_horizontal_margin"
             android:layout_marginStart="@dimen/item_horizontal_margin"
             android:fontFamily="sans-serif-condensed"
@@ -29,6 +37,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:textAppearance="?android:textAppearanceSmall"
+            android:text="@string/sample_due_date_1_day"
             />
         <TextView
             android:id="@+id/item_list_sale_code"
@@ -38,7 +47,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:textColor="@color/colorPrimary"
-            android:textAppearance="?android:textAppearanceSmall"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="@string/sample_2_invoice_code"
            />
     </LinearLayout>
     <TextView
@@ -55,4 +65,5 @@
         android:fontFamily="sans-serif-condensed"
         android:textAppearance="?android:textAppearanceLarge"
         />
-</LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -34,7 +34,6 @@
             android:maxLength="14"
             android:textAppearance="?android:textAppearanceMedium"
             />
-
     <TextView
             android:id="@+id/item_list_purchase_amount"
             android:layout_width="0dp"
