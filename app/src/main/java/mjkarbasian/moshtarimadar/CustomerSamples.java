@@ -1,7 +1,10 @@
 package mjkarbasian.moshtarimadar;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 import mjkarbasian.moshtarimadar.helper.Utility;
@@ -31,22 +34,24 @@ public class CustomerSamples {
     public static String[] debtorsMobileNumber={"09124381232","09124543212"};
     public static ArrayList<String> salesCode = new ArrayList<String>();
     public static ArrayList<String> salesDue = new ArrayList<String>();
-    public static double[] salesAmount = {2000000,1190000,2400000,3200000,1100000,2000000,2020000,332000,400000};
+   public static ArrayList<ArrayList<String>> sales = new ArrayList<ArrayList<String>>();
+    public static ArrayList<String> salesCustomer = new ArrayList<String>();
+    public static ArrayList<String> salesAmount = new ArrayList<String>();
     public static String[] products={"pr01","pr02","pr03","pr04","pr05"};
     public static double[] productsPrice={600000,900000,1200000,332000,400000};
     public static Integer[] productImages={R.raw.pr01,R.raw.pr02,R.raw.pr03,R.raw.pr04,R.raw.pr05};
     public static String[][] salesProduct={{products[0],products[3]},{products[0]},{products[3],products[4]},{products[3]},
             {products[1],products[2]},{products[2]},{products[3],products[4]},{products[0]},{products[1]}};
     public static void setSalesCode(){
-        salesCode.add("Inv-12430");
-        salesCode.add("Inv-12431");
-        salesCode.add("Inv-12432");
-        salesCode.add("Inv-12433");
-        salesCode.add("Inv-12434");
-        salesCode.add("Inv-12435");
-        salesCode.add("Inv-12436");
-        salesCode.add("Inv-12437");
-        salesCode.add("Inv-12438");
+        salesCode.add("12430");
+        salesCode.add("12431");
+        salesCode.add("12432");
+        salesCode.add("12433");
+        salesCode.add("12434");
+        salesCode.add("12435");
+        salesCode.add("12436");
+        salesCode.add("12437");
+        salesCode.add("12438");
     }
     public static void setSaleDueDate()
     {
@@ -89,6 +94,37 @@ public class CustomerSamples {
         salesDue.add(lastMonthDays);
 
     }
+    public static void setSalesCustomer(Context context){
+        salesCustomer.add(context.getString(customerName[0]));
+        salesCustomer.add(context.getString(customerName[2]));
+        salesCustomer.add(context.getString(customerName[1]));
+        salesCustomer.add(context.getString(customerName[1]));
+        salesCustomer.add(context.getString(customerName[2]));
+        salesCustomer.add(context.getString(customerName[0]));
+        salesCustomer.add(context.getString(customerName[1]));
+        salesCustomer.add(context.getString(customerName[2]));
+        salesCustomer.add(context.getString(customerName[2]));
+
+    }
+    public static void setSalesAmount(){
+        salesAmount.add("900000");
+        salesAmount.add("450000");
+        salesAmount.add("220000");
+        salesAmount.add("175000");
+        salesAmount.add("430000");
+        salesAmount.add("250000");
+        salesAmount.add("780000");
+        salesAmount.add("980000");
+        salesAmount.add("235000");
+    }
+    public static void setSale() {
+        Collections.reverse(salesCode);
+        sales.add(salesDue);
+        sales.add(salesCode);
+        sales.add(salesCustomer);
+        sales.add(salesAmount);
+    }
+
 
 }
 

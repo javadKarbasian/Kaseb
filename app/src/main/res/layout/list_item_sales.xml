@@ -6,21 +6,19 @@
     <LinearLayout
         android:layout_height="72dp"
         android:layout_width="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
         android:gravity="center"
         android:orientation="vertical"
         >
         <TextView
             android:id="@+id/item_list_sale_customer_name"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="@string/kaseb_name"
             android:layout_marginLeft="@dimen/item_horizontal_margin"
             android:layout_marginStart="@dimen/item_horizontal_margin"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/cardview_dark_background"
-            android:maxLength="14"
             android:textAppearance="?android:textAppearanceMedium"
             />
         <TextView
@@ -31,7 +29,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:textAppearance="?android:textAppearanceSmall"
-            android:text="@string/sample_due_date_1_day"/>
+            />
         <TextView
             android:id="@+id/item_list_sale_code"
             android:layout_marginLeft="@dimen/item_horizontal_margin"
@@ -41,12 +39,12 @@
             android:layout_weight="1"
             android:textColor="@color/colorPrimary"
             android:textAppearance="?android:textAppearanceSmall"
-            android:text="@string/sample_sale_code"/>
+           />
     </LinearLayout>
     <TextView
         android:id="@+id/item_list_sale_purchase_amount"
         android:layout_width="0dp"
-        android:layout_weight="3"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"

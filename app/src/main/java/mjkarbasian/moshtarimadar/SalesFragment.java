@@ -12,6 +12,8 @@ import java.text.ParseException;
 import mjkarbasian.moshtarimadar.adapters.SaleAdapter;
 import mjkarbasian.moshtarimadar.helper.Utility;
 
+import static mjkarbasian.moshtarimadar.CustomerSamples.*;
+
 
 /**
  * A placeholder fragment containing a simple view.
@@ -35,13 +37,16 @@ public class SalesFragment extends Fragment {
         int monthCounter = 0;
         int olderCounter = 0;
 
-        if(CustomerSamples.salesCode.size()==0)
+        if(salesCode.size()==0)
         {
-            CustomerSamples.setSalesCode();
-            CustomerSamples.setSaleDueDate();
+            setSalesCode();
+            setSaleDueDate();
+            setSalesCustomer(getActivity());
+            setSalesAmount();
+            setSale();
         }
 
-        for (String date : CustomerSamples.salesDue)
+        for (String date : salesDue)
         {
             try {
               todayCheck = Utility.isToday(date);
@@ -55,43 +60,44 @@ public class SalesFragment extends Fragment {
 
         }
         if(todayCounter>0){ mSalesAdapter.addSectionHeaderItem(getString(R.string.header_today));
-        for(String date : CustomerSamples.salesDue)
+        for(int i=0;i< sales.get(0).size();i++)
         {
             try {
-                if(Utility.isToday(date))mSalesAdapter.addItem(date);
+                if(Utility.isToday(sales.get(0).get(i)))mSalesAdapter.addItem(sales.get(1).get(i));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }}
-        if(weekCounter>0) {mSalesAdapter.addSectionHeaderItem(getString(R.string.header_this_week));
-        for(String date : CustomerSamples.salesDue)
-        {
-            try {
-                if(Utility.isThisWeek(date))mSalesAdapter.addItem(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }}
+        if(weekCounter>0) {
+            mSalesAdapter.addSectionHeaderItem(getString(R.string.header_this_week));
+            for(int i=0;i< sales.get(0).size();i++)
+            {
+                try {
+                    if(!Utility.isToday(sales.get(0).get(i))&&Utility.isThisWeek(sales.get(0).get(i)))mSalesAdapter.addItem(sales.get(1).get(i));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }}
         if(monthCounter>0){ mSalesAdapter.addSectionHeaderItem(getString(R.string.header_this_month));
-        for(String date : CustomerSamples.salesDue)
-        {
-            try {
-                if(Utility.isThisMonth(date))mSalesAdapter.addItem(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }}
+            for(int i=0;i< sales.get(0).size();i++)
+            {
+                try {
+                    if(!Utility.isToday(sales.get(0).get(i))&&!Utility.isThisWeek(sales.get(0).get(i))&&Utility.isThisMonth(sales.get(0).get(i)))mSalesAdapter.addItem(sales.get(1).get(i));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }}
         if(olderCounter>0)
         {
         mSalesAdapter.addSectionHeaderItem(getString(R.string.header_older));
-        for(String date : CustomerSamples.salesDue)
-        {
-            try {
-                if(!Utility.isThisMonth(date))mSalesAdapter.addItem(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
+            for(int i=0;i< sales.get(0).size();i++)
+            {
+                try {
+                    if(!Utility.isToday(sales.get(0).get(i))&&!Utility.isThisWeek(sales.get(0).get(i))&&!Utility.isThisMonth(sales.get(0).get(i)))mSalesAdapter.addItem(sales.get(1).get(i));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
-        }
         }
 
             View rootView = inflater.inflate(R.layout.fragment_sales, container, false);

@@ -10,7 +10,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
+import mjkarbasian.moshtarimadar.CustomerSamples;
 import mjkarbasian.moshtarimadar.R;
+import mjkarbasian.moshtarimadar.helper.Utility;
 
 /**
  * Created by family on 7/12/2016.
@@ -73,8 +75,7 @@ public class SaleAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         int rowType = getItemViewType(position);
         View view = convertView;
-        if(convertView==null)
-        {
+
             switch (rowType) {
                 case TYPE_ITEM:
                     view = mInflater.inflate(R.layout.list_item_sales, null);
@@ -82,15 +83,25 @@ public class SaleAdapter extends BaseAdapter {
                     TextView saleCode =(TextView)view.findViewById(R.id.item_list_sale_code);
                     TextView saleAmount = (TextView)view.findViewById(R.id.item_list_sale_purchase_amount);
                     TextView saleDue = (TextView)view.findViewById(R.id.item_list_sale_due_date);
-
+                    customerName.setText(CustomerSamples.sales.get(2).get(CustomerSamples.sales.get(1).indexOf(mData.get(position))));
+                    saleCode.setText(Utility.doubleFormatter(Integer.parseInt(mData.get(position))));
+                    saleAmount.setText(Utility.DecimalSeperation(mContext,Integer.parseInt(CustomerSamples.sales.get(3).get(CustomerSamples.sales.get(1).indexOf(mData.get(position))))));
+                    if(!(Utility.getLocale(mContext) =="IR")){
+                        saleDue.setText(CustomerSamples.sales.get(0).get(CustomerSamples.sales.get(1).indexOf(mData.get(position))));
+                    }
+                    else{
+                     saleDue.setText(Utility.JalaliDatePicker(CustomerSamples.sales.get(0).get(CustomerSamples.sales.get(1).indexOf(mData.get(position)))));
+                    }
                     break;
                 case TYPE_SEPARATOR:
                     view = mInflater.inflate(R.layout.list_item_sales_header, null);
                     TextView headerText = (TextView)view.findViewById(R.id.header_list_sale);
                     headerText.setText(mData.get(position));
                     break;
+                default:
+
             }
-        }
+
         return view;
     }
 }
