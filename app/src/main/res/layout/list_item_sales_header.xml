@@ -10,12 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:paddingStart="8dp"
-        android:paddingLeft="8dp"
+        android:padding="8dp"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="?android:textColorPrimaryInverse"
-        android:background="@color/colorPrimary"
         android:visibility="visible" />
 </LinearLayout>
