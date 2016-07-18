@@ -1,4 +1,4 @@
-package mjkarbasian.moshtarimadar;
+package mjkarbasian.moshtarimadar.helper;
 
 import android.content.Context;
 
@@ -7,12 +7,12 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
-import mjkarbasian.moshtarimadar.helper.Utility;
+import mjkarbasian.moshtarimadar.R;
 
 /**
  * Created by family on 6/27/2016.
  */
-public class CustomerSamples {
+public class Samples {
     public static Integer[] customerName = {R.string.sample_ali_ghorbani,R.string.sample_mohammad_alikhani,R.string.sample_sima_saberzadeh};
     public static Integer[] debatorName = {customerName[0],customerName[2]};
     public static Integer[] debtorsCodeNums  = {3,4};
@@ -34,7 +34,7 @@ public class CustomerSamples {
     public static String[] debtorsMobileNumber={"09124381232","09124543212"};
     public static ArrayList<String> salesCode = new ArrayList<String>();
     public static ArrayList<String> salesDue = new ArrayList<String>();
-   public static ArrayList<ArrayList<String>> sales = new ArrayList<ArrayList<String>>();
+    public static ArrayList<ArrayList<String>> sales = new ArrayList<ArrayList<String>>();
     public static ArrayList<String> salesCustomer = new ArrayList<String>();
     public static ArrayList<String> salesAmount = new ArrayList<String>();
     public static String[] products={"pr01","pr02","pr03","pr04","pr05"};
@@ -42,6 +42,12 @@ public class CustomerSamples {
     public static Integer[] productImages={R.raw.pr01,R.raw.pr02,R.raw.pr03,R.raw.pr04,R.raw.pr05};
     public static String[][] salesProduct={{products[0],products[3]},{products[0]},{products[3],products[4]},{products[3]},
             {products[1],products[2]},{products[2]},{products[3],products[4]},{products[0]},{products[1]}};
+    public static ArrayList<String> costNames = new ArrayList<String>();
+    public static ArrayList<String> costsDue = new ArrayList<String>();
+    public static ArrayList<String> costsCode = new ArrayList<String>();
+    public static ArrayList<String> costsAmount =new ArrayList<String>();
+    public static ArrayList<ArrayList<String>> costs = new ArrayList<ArrayList<String>>();
+
     public static void setSalesCode(){
         salesCode.add("12430");
         salesCode.add("12431");
@@ -53,8 +59,7 @@ public class CustomerSamples {
         salesCode.add("12437");
         salesCode.add("12438");
     }
-    public static void setSaleDueDate()
-    {
+    public static void setSaleDueDate() {
         Calendar calendar = Calendar.getInstance();
         //add today
         Date today_time = calendar.getTime();
@@ -65,11 +70,11 @@ public class CustomerSamples {
         String todayTwoHourAgo = Utility.formatDate(calendar);
         salesDue.add(todayTwoHourAgo);
         //add yesterday;
-        calendar.roll(Calendar.DAY_OF_WEEK, -1);
+        calendar.roll(Calendar.DAY_OF_MONTH, -1);
         String yesterday = Utility.formatDate(calendar);
         salesDue.add(yesterday);
         //add two days ago
-        calendar.roll(Calendar.DAY_OF_WEEK, -2);
+        calendar.roll(Calendar.DAY_OF_MONTH, -2);
         String twoDaysAgo = Utility.formatDate(calendar);
         salesDue.add(twoDaysAgo);
         //add three days ago
@@ -125,6 +130,50 @@ public class CustomerSamples {
         sales.add(salesAmount);
     }
 
+    public static void setCostNames(Context context){
+        costNames.add(context.getString(R.string.sample_cost_name));
+        costNames.add(context.getString(R.string.sample_cost_name_2));
+        costNames.add(context.getString(R.string.sample_cost_name_3));
+        costNames.add(context.getString(R.string.sample_cost_name_4));
+    }
+    public static void setCostDue(){
+        Calendar calendar = Calendar.getInstance();
+        //add today
+        Date today_time = calendar.getTime();
+        String today = Utility.formatDate(calendar);
+        costsDue.add(today);
+        //add today two hours ago
+        calendar.roll(Calendar.HOUR_OF_DAY, -2);
+        String todayTwoHourAgo = Utility.formatDate(calendar);
+        costsDue.add(todayTwoHourAgo);
+        //add last weeks 2 days ago
+        calendar.roll(Calendar.DAY_OF_MONTH,-2);
+        String lastWeekDays = Utility.formatDate(calendar);
+        costsDue.add(lastWeekDays);
+        //add last month and before
+        calendar.roll(Calendar.MONTH,-1);
+        String lastMonthDays = Utility.formatDate(calendar);
+        costsDue.add(lastMonthDays);
+    }
+    public static void setCostCode(){
+        costsCode.add("102");
+        costsCode.add("103");
+        costsCode.add("104");
+        costsCode.add("105");
+    }
+    public static void setCostAmount(){
+        costsAmount.add("17500");
+        costsAmount.add("43000");
+        costsAmount.add("25000");
+        costsAmount.add("78000");
+    }
+    public static void setCost(Context context){
+        Collections.reverse(costsCode);
+        costs.add(costsDue);
+        costs.add(costsCode);
+        costs.add(costNames);
+        costs.add(costsAmount);
 
+    }
 }
 

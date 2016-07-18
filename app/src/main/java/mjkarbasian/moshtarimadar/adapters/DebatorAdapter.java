@@ -19,14 +19,14 @@ import java.text.DecimalFormat;
 
 import mjkarbasian.moshtarimadar.R;
 
-import static mjkarbasian.moshtarimadar.CustomerSamples.customerDebateBalance;
-import static mjkarbasian.moshtarimadar.CustomerSamples.customerName;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debatorName;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debtorBalance;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debtorsCode;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debtorsCodeNums;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debtorsDue;
-import static mjkarbasian.moshtarimadar.CustomerSamples.debtorsMobileNumber;
+import static mjkarbasian.moshtarimadar.helper.Samples.customerDebateBalance;
+import static mjkarbasian.moshtarimadar.helper.Samples.customerName;
+import static mjkarbasian.moshtarimadar.helper.Samples.debatorName;
+import static mjkarbasian.moshtarimadar.helper.Samples.debtorBalance;
+import static mjkarbasian.moshtarimadar.helper.Samples.debtorsCode;
+import static mjkarbasian.moshtarimadar.helper.Samples.debtorsCodeNums;
+import static mjkarbasian.moshtarimadar.helper.Samples.debtorsDue;
+import static mjkarbasian.moshtarimadar.helper.Samples.debtorsMobileNumber;
 import static mjkarbasian.moshtarimadar.helper.Utility.DecimalSeperation;
 import static mjkarbasian.moshtarimadar.helper.Utility.JalaliDatePicker;
 import static mjkarbasian.moshtarimadar.helper.Utility.dipConverter;

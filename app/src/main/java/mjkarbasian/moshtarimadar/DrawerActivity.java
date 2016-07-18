@@ -99,6 +99,8 @@ public class DrawerActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_costs) {
+            intent = new Intent(this,Costs.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_products) {
 

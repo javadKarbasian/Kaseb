@@ -31,8 +31,8 @@
     <string name="sort_alphabetic">الفبا</string>
     <string name="sort_membership">عضویت</string>
     <string name="sort_title">چینش</string>
-    <string name="fab_add_customer">افزودن مشتری</string>
-    <string name="fab_add_sale">افزودن فروش</string>
+    <string name="fab_add_customer">ثبت مشتری</string>
+    <string name="fab_add_sale">ثبت فروش</string>
     <string name="sample_due_date_1_day">95/8/2</string>
     <string name="column_title_Bill_code">کد فاکتور</string>
     <string name="column_title_account_balance">مانده ریال</string>
@@ -52,5 +52,12 @@
     <string name="title_activity_sales">فروشها</string>
     <string name="header_this_month">ماه جاری</string>
     <string name="header_today">امروز</string>
+    <string name="fab_add_cost">ثبت هزینه</string>
+    <string name="sort_cost_code">کد هزینه</string>
+    <string name="title_activity_costs">هزینه ها</string>
+    <string name="sample_cost_name">دستمزد کارگر</string>
+    <string name="sample_cost_name_2">قبض تلفن</string>
+    <string name="sample_cost_name_3">ناهار</string>
+    <string name="sample_cost_name_4">کرایه پیک</string>
 
 </resources>

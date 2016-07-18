@@ -12,7 +12,7 @@ import java.text.ParseException;
 import mjkarbasian.moshtarimadar.adapters.SaleAdapter;
 import mjkarbasian.moshtarimadar.helper.Utility;
 
-import static mjkarbasian.moshtarimadar.CustomerSamples.*;
+import static mjkarbasian.moshtarimadar.helper.Samples.*;
 
 
 /**

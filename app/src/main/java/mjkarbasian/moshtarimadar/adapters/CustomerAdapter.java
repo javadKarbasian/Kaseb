@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
-import mjkarbasian.moshtarimadar.CustomerSamples;
+import mjkarbasian.moshtarimadar.helper.Samples;
 import mjkarbasian.moshtarimadar.R;
 import mjkarbasian.moshtarimadar.helper.Utility;
 
@@ -28,12 +28,12 @@ public class CustomerAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-        return CustomerSamples.customerName.length;
+        return Samples.customerName.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return CustomerSamples.customerName[position];
+        return Samples.customerName[position];
     }
 
     @Override
@@ -50,17 +50,17 @@ public class CustomerAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.list_item_customers,parent,false);
         }
         TextView customerNameText = (TextView)view.findViewById(R.id.item_list_customer_name);
-        customerNameText.setText(mContext.getString(CustomerSamples.customerName[position]));
+        customerNameText.setText(mContext.getString(Samples.customerName[position]));
 //        RatingBar customerRate = (RatingBar) view.findViewById(R.id.item_list_rating_bar);
 //        customerRate.setRating(customerRating[position]);
         TextView customerPurchaseAmountText =(TextView)view.findViewById(R.id.item_list_purchase_amount);
         DecimalFormat format = new DecimalFormat();
         format.setDecimalSeparatorAlwaysShown(true);
-        String purchaseAmount =(String)format.format(CustomerSamples.customerPurchaseAmount[position]);
+        String purchaseAmount =(String)format.format(Samples.customerPurchaseAmount[position]);
         purchaseAmount = Utility.formatPurchase(mContext, purchaseAmount);
         customerPurchaseAmountText.setText(purchaseAmount);
         ImageView customerState =(ImageView)view.findViewById(R.id.item_list_customer_state);
-        setCustomerState(customerState, CustomerSamples.customerPurchaseAmount[position]);
+        setCustomerState(customerState, Samples.customerPurchaseAmount[position]);
         return view;
     }
 

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
-import mjkarbasian.moshtarimadar.CustomerSamples;
+import mjkarbasian.moshtarimadar.helper.Samples;
 import mjkarbasian.moshtarimadar.R;
 import mjkarbasian.moshtarimadar.helper.Utility;
 
@@ -82,19 +82,19 @@ public class SaleAdapter extends BaseAdapter {
                     TextView saleCode =(TextView)view.findViewById(R.id.item_list_sale_code);
                     TextView saleAmount = (TextView)view.findViewById(R.id.item_list_sale_purchase_amount);
                     TextView saleDue = (TextView)view.findViewById(R.id.item_list_sale_due_date);
-                    customerName.setText(CustomerSamples.sales.get(2).get(CustomerSamples.sales.get(1).indexOf(mData.get(position))));
+                    customerName.setText(Samples.sales.get(2).get(Samples.sales.get(1).indexOf(mData.get(position))));
                     saleCode.setText(Utility.doubleFormatter(Integer.parseInt(mData.get(position))));
-                    saleAmount.setText(Utility.formatPurchase(mContext, Utility.DecimalSeperation(mContext, Integer.parseInt(CustomerSamples.sales.get(3).get(CustomerSamples.sales.get(1).indexOf(mData.get(position)))))));
+                    saleAmount.setText(Utility.formatPurchase(mContext, Utility.DecimalSeperation(mContext, Integer.parseInt(Samples.sales.get(3).get(Samples.sales.get(1).indexOf(mData.get(position)))))));
                     if(!(Utility.getLocale(mContext).equals("IR"))){
-                        saleDue.setText(CustomerSamples.sales.get(0).get(CustomerSamples.sales.get(1).indexOf(mData.get(position))));
+                        saleDue.setText(Samples.sales.get(0).get(Samples.sales.get(1).indexOf(mData.get(position))));
 
                     }
                     else{
-                     saleDue.setText(Utility.JalaliDatePicker(CustomerSamples.sales.get(0).get(CustomerSamples.sales.get(1).indexOf(mData.get(position)))));
+                     saleDue.setText(Utility.JalaliDatePicker(Samples.sales.get(0).get(Samples.sales.get(1).indexOf(mData.get(position)))));
                     }
                     break;
                 case TYPE_SEPARATOR:
-                    view = mInflater.inflate(R.layout.list_item_sales_header, null);
+                    view = mInflater.inflate(R.layout.list_item_date_header, null);
                     TextView headerText = (TextView)view.findViewById(R.id.header_list_sale);
                     headerText.setText(mData.get(position));
                     break;

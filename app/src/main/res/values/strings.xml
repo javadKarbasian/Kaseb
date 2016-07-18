@@ -52,4 +52,11 @@
     <string name="header_older">Older</string>
     <string name="header_today">Today</string>
     <string name="header_this_month">This month</string>
+    <string name="title_activity_costs">Costs</string>
+    <string name="fab_add_cost">Add cost</string>
+    <string name="sort_cost_code">Cost code</string>
+    <string name="sample_cost_name">personnel salary</string>
+    <string name="sample_cost_name_2">phone bill</string>
+    <string name="sample_cost_name_3">dinner</string>
+    <string name="sample_cost_name_4">transport</string>
 </resources>
