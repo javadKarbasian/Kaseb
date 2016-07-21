@@ -59,4 +59,13 @@
     <string name="sample_cost_name_2">phone bill</string>
     <string name="sample_cost_name_3">dinner</string>
     <string name="sample_cost_name_4">transport</string>
+    <string name="title_activity_products">Products</string>
+    <string name="fab_add_product">add product</string>
+    <string name="sort_product_code">products code</string>
+    <string name="sample_product_name">Samsung GE7</string>
+    <string name="sample_product_name_2">Samsung GA7</string>
+    <string name="sample_product_name_3">Samsung GJ7</string>
+    <string name="sample_product_name_4">Samsung GA5</string>
+    <string name="sample_product_name_5">Samsung GJ5</string>
+    <string name="sample_product_name_6">Samsung GN5</string>
 </resources>

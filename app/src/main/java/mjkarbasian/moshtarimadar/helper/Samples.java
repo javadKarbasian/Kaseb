@@ -37,16 +37,18 @@ public class Samples {
     public static ArrayList<ArrayList<String>> sales = new ArrayList<ArrayList<String>>();
     public static ArrayList<String> salesCustomer = new ArrayList<String>();
     public static ArrayList<String> salesAmount = new ArrayList<String>();
-    public static String[] products={"pr01","pr02","pr03","pr04","pr05"};
     public static double[] productsPrice={600000,900000,1200000,332000,400000};
-    public static Integer[] productImages={R.raw.pr01,R.raw.pr02,R.raw.pr03,R.raw.pr04,R.raw.pr05};
-    public static String[][] salesProduct={{products[0],products[3]},{products[0]},{products[3],products[4]},{products[3]},
-            {products[1],products[2]},{products[2]},{products[3],products[4]},{products[0]},{products[1]}};
     public static ArrayList<String> costNames = new ArrayList<String>();
     public static ArrayList<String> costsDue = new ArrayList<String>();
     public static ArrayList<String> costsCode = new ArrayList<String>();
     public static ArrayList<String> costsAmount =new ArrayList<String>();
     public static ArrayList<ArrayList<String>> costs = new ArrayList<ArrayList<String>>();
+    public static ArrayList<String> productName = new ArrayList<String>();
+    public static ArrayList<String> productCode = new ArrayList<String>();
+    public static ArrayList<String> productDate = new ArrayList<String>();
+    public static ArrayList<String> productPrice = new ArrayList<String>();
+    public static ArrayList<ArrayList<String>> products = new ArrayList<ArrayList<String>>();
+
 
     public static void setSalesCode(){
         salesCode.add("12430");
@@ -174,6 +176,65 @@ public class Samples {
         costs.add(costNames);
         costs.add(costsAmount);
 
+    }
+
+    public static void setProductName(Context context) {
+        productName.add(context.getString(R.string.sample_product_name));
+        productName.add(context.getString(R.string.sample_product_name_2));
+        productName.add(context.getString(R.string.sample_product_name_3));
+        productName.add(context.getString(R.string.sample_product_name_4));
+        productName.add(context.getString(R.string.sample_product_name_5));
+        productName.add(context.getString(R.string.sample_product_name_6));
+    }
+    public static void setProductCode(){
+        productCode.add("110");
+        productCode.add("111");
+        productCode.add("112");
+        productCode.add("113");
+        productCode.add("114");
+        productCode.add("115");
+    }
+    public static void setProductDate(){
+        Calendar calendar = Calendar.getInstance();
+        //add today
+        Date today_time = calendar.getTime();
+        String today = Utility.formatDate(calendar);
+        productDate.add(today);
+        //add today two hours ago
+        calendar.roll(Calendar.HOUR_OF_DAY, -2);
+        String todayTwoHourAgo = Utility.formatDate(calendar);
+        productDate.add(todayTwoHourAgo);
+        //add yesterday;
+        calendar.roll(Calendar.DAY_OF_MONTH, -1);
+        String yesterday = Utility.formatDate(calendar);
+        productDate.add(yesterday);
+        //add two days ago
+        calendar.roll(Calendar.DAY_OF_MONTH, -2);
+        String twoDaysAgo = Utility.formatDate(calendar);
+        productDate.add(twoDaysAgo);
+        //add three days ago
+        calendar.roll(Calendar.DAY_OF_WEEK, -3);
+        String threeDaysAgo = Utility.formatDate(calendar);
+        productDate.add(threeDaysAgo);
+        //add last weeks ago
+        calendar.roll(Calendar.WEEK_OF_MONTH,-2);
+        String lastWeek = Utility.formatDate(calendar);
+        productDate.add(lastWeek);
+    }
+    public static void setProductPrice(){
+        productPrice.add("1300000");
+        productPrice.add("670000");
+        productPrice.add("230000");
+        productPrice.add("120000");
+        productPrice.add("560000");
+        productPrice.add("760000");
+    }
+    public static void setProducts(){
+        Collections.reverse(productCode);
+        products.add(productDate);
+        products.add(productCode);
+        products.add(productName);
+        products.add(productPrice);
     }
 }
 

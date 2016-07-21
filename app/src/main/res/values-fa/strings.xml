@@ -59,5 +59,14 @@
     <string name="sample_cost_name_2">قبض تلفن</string>
     <string name="sample_cost_name_3">ناهار</string>
     <string name="sample_cost_name_4">کرایه پیک</string>
+    <string name="fab_add_product">ثبت محصول یا خدمت</string>
+    <string name="sample_product_name">سامسونگ گلکسی ای7</string>
+    <string name="sample_product_name_2">سامسونگ گلکسی آ7</string>
+    <string name="sample_product_name_3">سامسونگ گلکسی جی 5</string>
+    <string name="sample_product_name_4">سامسونگ گلکسی آ 5</string>
+    <string name="sample_product_name_5">سامسونگ گلکسی جی 5</string>
+    <string name="sample_product_name_6">سامسونگ نوت 5</string>
+    <string name="sort_product_code">کد محصولات</string>
+    <string name="title_activity_products">محصولات</string>
 
 </resources>
