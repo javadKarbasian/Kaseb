@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
-import mjkarbasian.moshtarimadar.helper.Samples;
 import mjkarbasian.moshtarimadar.R;
+import mjkarbasian.moshtarimadar.helper.Samples;
 import mjkarbasian.moshtarimadar.helper.Utility;
 
 
@@ -51,8 +51,21 @@ public class CustomerAdapter extends BaseAdapter {
         }
         TextView customerNameText = (TextView)view.findViewById(R.id.item_list_customer_name);
         customerNameText.setText(mContext.getString(Samples.customerName[position]));
-//        RatingBar customerRate = (RatingBar) view.findViewById(R.id.item_list_rating_bar);
-//        customerRate.setRating(customerRating[position]);
+
+        ImageView customerAvater = (ImageView) view.findViewById(R.id.item_list_customer_avatar);
+        if(Samples.customerAvatar.size()==0)
+        {
+            customerAvater.setImageResource(R.drawable.kaseb_pic);
+        }
+        else
+        {
+            if(!(Samples.customerAvatar.size()<=position)){
+            customerAvater.setImageURI(Samples.customerAvatar.get(position));}
+            else {
+                customerAvater.setImageResource(R.drawable.kaseb_pic);
+            }
+        }
+
         TextView customerPurchaseAmountText =(TextView)view.findViewById(R.id.item_list_purchase_amount);
         DecimalFormat format = new DecimalFormat();
         format.setDecimalSeparatorAlwaysShown(true);

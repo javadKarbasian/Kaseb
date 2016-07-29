@@ -18,6 +18,7 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 import mjkarbasian.moshtarimadar.R;
+import mjkarbasian.moshtarimadar.helper.Samples;
 
 import static mjkarbasian.moshtarimadar.helper.Samples.customerDebateBalance;
 import static mjkarbasian.moshtarimadar.helper.Samples.customerName;
@@ -71,6 +72,20 @@ public class DebatorAdapter extends BaseAdapter {
 
         TextView debatorNameText = (TextView)view.findViewById(R.id.item_card_debator_name);
         debatorNameText.setText(mContext.getString(customerName[position]));
+
+        ImageView customerAvater = (ImageView)view.findViewById(R.id.item_card_customer_avater);
+        if(Samples.customerAvatar.size()==0)
+        {
+            customerAvater.setImageResource(R.drawable.kaseb_pic);
+        }
+        else
+        {
+            if(!(Samples.customerAvatar.size()<=position)){
+                customerAvater.setImageURI(Samples.customerAvatar.get(position));}
+            else {
+                customerAvater.setImageResource(R.drawable.kaseb_pic);
+            }
+        }
 
         TextView debatorBalanceText =(TextView)view.findViewById(R.id.item_card_balance_amount);
         DecimalFormat format = new DecimalFormat();

@@ -1,6 +1,7 @@
 package mjkarbasian.moshtarimadar.helper;
 
 import android.content.Context;
+import android.net.Uri;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,6 +15,8 @@ import mjkarbasian.moshtarimadar.R;
  */
 public class Samples {
     public static Integer[] customerName = {R.string.sample_ali_ghorbani,R.string.sample_mohammad_alikhani,R.string.sample_sima_saberzadeh};
+    public static ArrayList<Uri> customerAvatar = new ArrayList<Uri>();
+
     public static Integer[] debatorName = {customerName[0],customerName[2]};
     public static Integer[] debtorsCodeNums  = {3,4};
     public static double[] debatorOneCodes = {12430,13450,13900};

@@ -19,6 +19,7 @@
     android:background="?attr/selectableItemBackground"
     >
     <ImageView
+        android:id="@+id/item_card_customer_avater"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_weight="1"

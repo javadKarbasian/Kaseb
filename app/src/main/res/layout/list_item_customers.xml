@@ -15,11 +15,13 @@
     android:orientation="horizontal"
      >
     <ImageView
+            android:id="@+id/item_list_customer_avatar"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:src="@drawable/kaseb_pic"
+            android:onClick="pic_selector"
     />
     <TextView
             android:id="@+id/item_list_customer_name"
