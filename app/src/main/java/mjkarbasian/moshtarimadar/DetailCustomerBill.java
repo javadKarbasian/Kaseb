@@ -1,7 +1,7 @@
 package mjkarbasian.moshtarimadar;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +22,7 @@ public class DetailCustomerBill extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.customer_bill, container, false);
+        //it most change to recyclerview for scrolling http://stackoverflow.com/questions/35577206/listview-inside-viewpager-not-scrolling
         ListView customerBills = (ListView)view.findViewById(R.id.list_view_customer_bills);
         CustomerBillAdapter adaper = new CustomerBillAdapter(getActivity(),customerPostion);
         customerBills.setAdapter(adaper);
