@@ -1,5 +1,6 @@
 package mjkarbasian.moshtarimadar.adapters;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -10,10 +11,15 @@ import mjkarbasian.moshtarimadar.DetailCustomerInfo;
 
 public class DetailCustomerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
+    Context mContext;
+    int customerPosition;
 
-    public DetailCustomerAdapter(FragmentManager fm, int NumOfTabs) {
+    public DetailCustomerAdapter(FragmentManager fm, int NumOfTabs,Context context,Integer position) {
         super(fm);
+        mContext = context;
         this.mNumOfTabs = NumOfTabs;
+        customerPosition = position;
+
     }
 
     @Override
@@ -24,10 +30,10 @@ public class DetailCustomerAdapter extends FragmentStatePagerAdapter {
                 DetailCustomerInfo tab1 = new DetailCustomerInfo();
                 return tab1;
             case 1:
-                DetailCustomerBill tab2 = new DetailCustomerBill();
+                DetailCustomerDash tab2 = new DetailCustomerDash();
                 return tab2;
             case 2:
-                DetailCustomerDash tab3 = new DetailCustomerDash();
+                DetailCustomerBill tab3 = new DetailCustomerBill(customerPosition);
                 return tab3;
             default:
                 return null;

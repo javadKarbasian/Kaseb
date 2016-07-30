@@ -55,12 +55,15 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
+
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/tab_layout"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_below="@id/tab_layout"
+       />
 
 
 

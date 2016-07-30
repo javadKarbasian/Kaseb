@@ -37,7 +37,6 @@ public class DetailCustomer extends AppCompatActivity {
         }
 
 
-        customerAvatar.setImageURI(Samples.customerAvatar.get(position));
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Info"));
         tabLayout.addTab(tabLayout.newTab().setText("Dashboard"));
@@ -46,7 +45,7 @@ public class DetailCustomer extends AppCompatActivity {
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final DetailCustomerAdapter adapter = new DetailCustomerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
+                (getSupportFragmentManager(), tabLayout.getTabCount(),this,position);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
