@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import mjkarbasian.moshtarimadar.R;
 import mjkarbasian.moshtarimadar.helper.Samples;
+import mjkarbasian.moshtarimadar.helper.Utility;
 
 /**
  * Created by family on 7/30/2016.
@@ -67,9 +68,18 @@ public class CustomerBillAdapter extends BaseAdapter {
         TextView priceText = (TextView) view.findViewById(R.id.item_list_product_price);
 
         nameText.setText(Samples.sales.get(2).get(Samples.sales.get(1).indexOf(mData.get(position))));
-        codeText.setText(mData.get(position));
-        dateText.setText(Samples.sales.get(0).get(Samples.sales.get(1).indexOf(mData.get(position))));
-        priceText.setText(Samples.sales.get(3).get(Samples.sales.get(1).indexOf(mData.get(position))));
+        codeText.setText(Utility.doubleFormatter(Double.parseDouble(mData.get(position))));
+
+        if(!(Utility.getLocale(mContext).equals("IR"))){
+            dateText.setText(Samples.sales.get(0).get(Samples.sales.get(1).indexOf(mData.get(position))));
+
+        }
+        else{
+            dateText.setText(Utility.JalaliDatePicker(Samples.sales.get(0).get(Samples.sales.get(1).indexOf(mData.get(position)))));
+        }
+
+        priceText.setText(Utility.formatPurchase(mContext, Utility.DecimalSeperation(mContext, Integer.parseInt(Samples.sales.get(3).get(Samples.sales.get(1).indexOf(mData.get(position)))))));
+
 
         return view;
     }

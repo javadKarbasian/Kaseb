@@ -38,9 +38,9 @@ public class DetailCustomer extends AppCompatActivity {
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Info"));
-        tabLayout.addTab(tabLayout.newTab().setText("Dashboard"));
-        tabLayout.addTab(tabLayout.newTab().setText("Bills"));
+        tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.customer_tab_info)));
+        tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.customer_tab_dash)));
+        tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.customer_tab_bill)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -65,4 +65,5 @@ public class DetailCustomer extends AppCompatActivity {
             }
         });
     }
+
 }

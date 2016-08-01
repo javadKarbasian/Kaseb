@@ -27,10 +27,10 @@ public class DetailCustomerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                DetailCustomerInfo tab1 = new DetailCustomerInfo();
+                DetailCustomerInfo tab1 = new DetailCustomerInfo(customerPosition);
                 return tab1;
             case 1:
-                DetailCustomerDash tab2 = new DetailCustomerDash();
+                DetailCustomerDash tab2 = new DetailCustomerDash(customerPosition);
                 return tab2;
             case 2:
                 DetailCustomerBill tab3 = new DetailCustomerBill(customerPosition);

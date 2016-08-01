@@ -1,6 +1,8 @@
 package mjkarbasian.moshtarimadar.helper;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.widget.ImageView;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -133,6 +135,11 @@ public class Utility {
         return (checkDayMonth == thisDayMonth );
     }
 
+    public static void setCustomerState(ImageView customerState, double purchaseAmount) {
+        if(purchaseAmount>6000000) {customerState.setColorFilter(Color.argb(255, 255, 223, 0));}
+        else if(purchaseAmount>2000000&&purchaseAmount<6000000){customerState.setColorFilter(Color.argb(255,169, 169, 169));}
+        else{customerState.setColorFilter(Color.argb(255,207, 125, 50));}
 
+    }
 
 }

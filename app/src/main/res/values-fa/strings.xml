@@ -68,5 +68,12 @@
     <string name="sample_product_name_6">سامسونگ نوت 5</string>
     <string name="sort_product_code">کد محصولات</string>
     <string name="title_activity_products">محصولات</string>
+    <string name="customer_dash_membership">عضویت</string>
+    <string name="customer_dash_number_purchase">تعداد خرید</string>
+    <string name="customer_dash_purchase_amount">خرید کل</string>
+    <string name="customer_dash_total_balance">بدهی کل</string>
+    <string name="customer_tab_bill">صورت حساب</string>
+    <string name="customer_tab_dash">داشبورد</string>
+    <string name="customer_tab_info">اطلاعات</string>
 
 </resources>
