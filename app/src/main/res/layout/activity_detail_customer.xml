@@ -31,11 +31,10 @@
 
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/app_bar"
+                android:id="@+id/customer_detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:navigationIcon="@drawable/arrow_left"
                 app:contentInsetStart="72dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:layout_collapseMode="pin" />

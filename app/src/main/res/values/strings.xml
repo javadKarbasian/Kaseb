@@ -76,4 +76,11 @@
     <string name="customer_tab_info">Info</string>
     <string name="customer_tab_dash">Dashboard</string>
     <string name="customer_tab_bill">Bills</string>
+    <string name="back_arrow">back</string>
+    <string name="edit_action_description">This icon let you modify customer data</string>
+    <string name="set_membership">set membership</string>
+    <string name="gold_member">Gold Member</string>
+    <string name="silver_memer">Silver Member</string>
+    <string name="bronze_member">Bronze Member</string>
+    <string name="non_member">no member</string>
 </resources>

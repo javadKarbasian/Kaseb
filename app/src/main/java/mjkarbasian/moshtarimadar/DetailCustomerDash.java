@@ -25,7 +25,7 @@ public class DetailCustomerDash extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.customer_dash, container, false);
         ImageView customerMembership = (ImageView) view.findViewById(R.id.customer_dash_membership);
-        Utility.setCustomerState(customerMembership, Samples.customerPurchaseAmount[customerPosition]);
+        Utility.setCustomerState(customerMembership, Samples.customerMembership[customerPosition]);
 
 
         TextView customerPurchase = (TextView) view.findViewById(R.id.customer_dash_total_purchase);

@@ -75,5 +75,12 @@
     <string name="customer_tab_bill">صورت حساب</string>
     <string name="customer_tab_dash">داشبورد</string>
     <string name="customer_tab_info">اطلاعات</string>
+    <string name="back_arrow">برگشت</string>
+    <string name="edit_action_description">این دکمه شما را به صفحه تغییر اطلاعات مشتری هدایت می کند</string>
+    <string name="bronze_member">عضو برنزی</string>
+    <string name="gold_member">عضو طلایی</string>
+    <string name="non_member">عضو عادی</string>
+    <string name="set_membership">تعیین نوع عضویت</string>
+    <string name="silver_memer">عضو نقره ای</string>
 
 </resources>

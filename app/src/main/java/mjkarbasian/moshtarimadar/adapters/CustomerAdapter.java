@@ -1,7 +1,6 @@
 package mjkarbasian.moshtarimadar.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,16 +72,10 @@ public class CustomerAdapter extends BaseAdapter {
         purchaseAmount = Utility.formatPurchase(mContext, purchaseAmount);
         customerPurchaseAmountText.setText(purchaseAmount);
         ImageView customerState =(ImageView)view.findViewById(R.id.item_list_customer_state);
-        setCustomerState(customerState, Samples.customerPurchaseAmount[position]);
+        Utility.setCustomerState(customerState, Samples.customerMembership[position]);
         return view;
     }
 
-    private void setCustomerState(ImageView customerState, double purchaseAmount) {
-        if(purchaseAmount>6000000) {customerState.setColorFilter(Color.argb(255, 255, 223, 0));}
-        else if(purchaseAmount>2000000&&purchaseAmount<6000000){customerState.setColorFilter(Color.argb(255,169, 169, 169));}
-        else{customerState.setColorFilter(Color.argb(255,207, 125, 50));}
-
-    }
 
     //Dummy data references;
 

@@ -22,6 +22,7 @@ public class Samples {
     public static double[] debatorOneCodes = {12430,13450,13900};
     public static double[] debatorTwoCodes = {10253,11276,13438,14864};
     public static Integer[] numberOfPurchase = {2,3,4};
+    public static Integer[] customerMembership = {2,1,3};
 
     public static double[][] debtorsCode = {debatorOneCodes,debatorTwoCodes};
     public static String[] debtorOneDue = {"2016/6/30","2016/10/8","2016/12/9"};

@@ -76,7 +76,11 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".DetailCustomer"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mjkarbasian.moshtarimadar.Customers"/>
+        </activity>
         <activity android:name=".helper.GalleryUtil"/>
         <activity android:name=".helper.ImageSelector"/>
     </application>
