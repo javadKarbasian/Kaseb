@@ -102,7 +102,7 @@ public class DetailCustomer extends AppCompatActivity {
                 break;
             case R.id.gold_member:
                 Samples.customerMembership[customerPosiotion] = 1 ;
-                
+
                 break;
             case R.id.silver_member:
                 Samples.customerMembership[customerPosiotion] = 2 ;

@@ -3,6 +3,7 @@ package mjkarbasian.moshtarimadar.helper;
 import android.content.Context;
 import android.net.Uri;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -17,7 +18,10 @@ public class Samples {
     public static Integer[] customerName = {R.string.sample_ali_ghorbani,R.string.sample_mohammad_alikhani,R.string.sample_sima_saberzadeh};
     public static ArrayList<Uri> customerAvatar = new ArrayList<Uri>();
 
+    public static Integer[] paymentModels ={R.string.payment_model_cash,R.string.payment_model_pos,R.string.payment_model_cheque,R.string.payment_model_credit};
+
     public static Integer[] debatorName = {customerName[0],customerName[2]};
+    public static Integer[] offTaxSticks = {R.string.sale_tax_tax_stick,R.string.sale_tax_off_stick};
     public static Integer[] debtorsCodeNums  = {3,4};
     public static double[] debatorOneCodes = {12430,13450,13900};
     public static double[] debatorTwoCodes = {10253,11276,13438,14864};
@@ -44,6 +48,9 @@ public class Samples {
     public static ArrayList<ArrayList<String>> sales = new ArrayList<ArrayList<String>>();
     public static ArrayList<String> salesCustomer = new ArrayList<String>();
     public static ArrayList<String> salesAmount = new ArrayList<String>();
+    public static ArrayList<String> salesFinalAmount = new ArrayList<String>();
+    public static ArrayList<String> amountOfSale = new ArrayList<String>();
+
     public static double[] productsPrice={600000,900000,1200000,332000,400000};
     public static ArrayList<String> costNames = new ArrayList<String>();
     public static ArrayList<String> costsDue = new ArrayList<String>();
@@ -55,6 +62,12 @@ public class Samples {
     public static ArrayList<String> productDate = new ArrayList<String>();
     public static ArrayList<String> productPrice = new ArrayList<String>();
     public static ArrayList<ArrayList<String>> products = new ArrayList<ArrayList<String>>();
+
+    //sale detail tables and columns
+    public static ArrayList<ArrayList<String>> saleProductList = new ArrayList<ArrayList<String>>();
+    public static ArrayList<ArrayList<String>> salePaymentList = new ArrayList<ArrayList<String>>();
+    public static ArrayList<ArrayList<String>> saleOffTaxList = new ArrayList<ArrayList<String>>();
+
 
 
     public static void setSalesCode(){
@@ -121,15 +134,36 @@ public class Samples {
 
     }
     public static void setSalesAmount(){
-        salesAmount.add("900000");
-        salesAmount.add("450000");
-        salesAmount.add("220000");
-        salesAmount.add("175000");
-        salesAmount.add("430000");
-        salesAmount.add("250000");
-        salesAmount.add("780000");
-        salesAmount.add("980000");
-        salesAmount.add("235000");
+
+        setSaleProductList();
+        for(String code:salesCode){
+            Integer totalAmount=0;
+            for(int i =0 ;i<amountOfSale.size();i++){
+                if(saleProductList.get(0).get(i).equals(code)){
+                    totalAmount+=Integer.parseInt(saleProductList.get(4).get(i)) ;
+                }
+            }
+            salesAmount.add(Integer.toString(totalAmount));
+        }
+
+    }
+    public static void setSaleFinalAmount(Context context){
+        for(String code:salesCode){
+            Integer offTaxSum =0 ;
+            int j =0 ;
+            for(int i=0;i<saleOffTaxList.get(0).size();i++){
+                if(saleOffTaxList.get(0).get(i).equals(code)){
+                    if(saleOffTaxList.get(1).get(i).equals(context.getResources().getString(offTaxSticks[0]))){
+                        offTaxSum+=Integer.parseInt(saleOffTaxList.get(2).get(i));
+                    }
+                    else{
+                        offTaxSum -= Integer.parseInt(saleOffTaxList.get(2).get(i));
+                    }
+                }
+            }
+            salesFinalAmount.add(j, Integer.toString(Integer.parseInt(salesAmount.get(j)) - offTaxSum));
+            j++;
+        }
     }
     public static void setSale() {
         Collections.reverse(salesCode);
@@ -137,7 +171,11 @@ public class Samples {
         sales.add(salesCode);
         sales.add(salesCustomer);
         sales.add(salesAmount);
+        sales.add(salesFinalAmount);
     }
+    //detail sale mdata: salecode,products , payments code ,discount,saleAmount,saleCustomer
+    //payments mdata: salecode,method,date,amount,
+    //discount mdata:salecode,discountPercentOfsaleAmount,discountAmount
 
     public static void setCostNames(Context context){
         costNames.add(context.getString(R.string.sample_cost_name));
@@ -243,5 +281,374 @@ public class Samples {
         products.add(productName);
         products.add(productPrice);
     }
+
+    public static void setSaleProductList(){
+        //Coloumns are : salecode,productName,Price,numbers,total amount
+        //fill in salecode
+        ArrayList codeOfSale = new ArrayList();
+        codeOfSale.add(salesCode.get(0));
+        codeOfSale.add(salesCode.get(0));
+        codeOfSale.add(salesCode.get(0));
+
+        codeOfSale.add(salesCode.get(1));
+        codeOfSale.add(salesCode.get(1));
+
+        codeOfSale.add(salesCode.get(2));
+
+        codeOfSale.add(salesCode.get(3));
+        codeOfSale.add(salesCode.get(3));
+        codeOfSale.add(salesCode.get(3));
+        codeOfSale.add(salesCode.get(3));
+
+        codeOfSale.add(salesCode.get(4));
+
+        codeOfSale.add(salesCode.get(5));
+        codeOfSale.add(salesCode.get(5));
+
+        codeOfSale.add(salesCode.get(6));
+        codeOfSale.add(salesCode.get(6));
+        codeOfSale.add(salesCode.get(6));
+        codeOfSale.add(salesCode.get(6));
+        codeOfSale.add(salesCode.get(6));
+
+        codeOfSale.add(salesCode.get(7));
+
+        codeOfSale.add(salesCode.get(8));
+
+        saleProductList.add(0, codeOfSale);
+        //fill in productName
+        ArrayList<String> productsOfSale = new ArrayList<String>();
+
+        productsOfSale.add(productName.get(0));
+        productsOfSale.add(productName.get(2));
+        productsOfSale.add(productName.get(3));
+
+        productsOfSale.add(productName.get(1));
+        productsOfSale.add(productName.get(3));
+
+        productsOfSale.add(productName.get(4));
+
+        productsOfSale.add(productName.get(3));
+        productsOfSale.add(productName.get(3));
+        productsOfSale.add(productName.get(4));
+        productsOfSale.add(productName.get(5));
+
+        productsOfSale.add(productName.get(5));
+
+        productsOfSale.add(productName.get(1));
+        productsOfSale.add(productName.get(2));
+
+        productsOfSale.add(productName.get(1));
+        productsOfSale.add(productName.get(2));
+        productsOfSale.add(productName.get(3));
+        productsOfSale.add(productName.get(4));
+        productsOfSale.add(productName.get(5));
+
+        productsOfSale.add(productName.get(5));
+
+        productsOfSale.add(productName.get(5));
+
+        saleProductList.add(1,codeOfSale);
+
+        //fill in price
+        ArrayList<String> priceOfSale = new ArrayList<String>();
+
+        for(String product:productsOfSale){
+            priceOfSale.add(products.get(3).get(products.get(2).indexOf(product)));
+        }
+        saleProductList.add(2,priceOfSale);
+
+        //fill in numbers
+        ArrayList<String> numberOfSale = new ArrayList<String>();
+
+        numberOfSale.add("1");
+        numberOfSale.add("1");
+        numberOfSale.add("2");
+
+        numberOfSale.add("1");
+        numberOfSale.add("3");
+
+        numberOfSale.add("5");
+
+        numberOfSale.add("1");
+        numberOfSale.add("3");
+        numberOfSale.add("5");
+        numberOfSale.add("2");
+
+        numberOfSale.add("10");
+
+        numberOfSale.add("9");
+        numberOfSale.add("7");
+
+        numberOfSale.add("3");
+        numberOfSale.add("4");
+        numberOfSale.add("1");
+        numberOfSale.add("2");
+        numberOfSale.add("5");
+
+        numberOfSale.add("2");
+
+        numberOfSale.add("3");
+
+        saleProductList.add(3,numberOfSale);
+
+        //fill in total price
+
+
+        for(int i=0 ;i<numberOfSale.size();i++){
+            amountOfSale.add(Integer.toString(Integer.parseInt(priceOfSale.get(i))*Integer.parseInt(numberOfSale.get(i))));
+        }
+        saleProductList.add(4,amountOfSale);
+    }
+    public static void setSalePaymentList(Context context) throws ParseException {
+        //Coloumns are : salecode,totalAmount,paymentDate,paymentModel,paymentAmount,paymentBalance
+
+        //fill in salecode
+        ArrayList codeOfSale = new ArrayList();
+        codeOfSale.add(salesCode.get(0));
+
+
+        codeOfSale.add(salesCode.get(1));
+        codeOfSale.add(salesCode.get(1));
+
+        codeOfSale.add(salesCode.get(2));
+
+        codeOfSale.add(salesCode.get(3));
+        codeOfSale.add(salesCode.get(3));
+        codeOfSale.add(salesCode.get(3));
+
+
+        codeOfSale.add(salesCode.get(4));
+
+        codeOfSale.add(salesCode.get(5));
+
+        codeOfSale.add(salesCode.get(6));
+        codeOfSale.add(salesCode.get(6));
+
+
+        codeOfSale.add(salesCode.get(7));
+
+        codeOfSale.add(salesCode.get(8));
+
+        salePaymentList.add(0,codeOfSale);
+
+        //fill in total amount
+        ArrayList totalAmount = new ArrayList();
+        totalAmount.add(salesAmount.get(0));
+
+
+        totalAmount.add(salesAmount.get(1));
+        totalAmount.add(salesAmount.get(1));
+
+        totalAmount.add(salesAmount.get(2));
+
+        totalAmount.add(salesAmount.get(3));
+        totalAmount.add(salesAmount.get(3));
+        totalAmount.add(salesAmount.get(3));
+
+
+        totalAmount.add(salesAmount.get(4));
+
+        totalAmount.add(salesAmount.get(5));
+
+        totalAmount.add(salesAmount.get(6));
+        totalAmount.add(salesAmount.get(6));
+
+
+        totalAmount.add(salesAmount.get(7));
+
+        totalAmount.add(salesAmount.get(8));
+
+        salePaymentList.add(1,totalAmount);
+
+        //fill in payment day
+        ArrayList paymentDate = new ArrayList();
+        paymentDate.add(salesDue.get(0));
+
+        paymentDate.add(salesDue.get(1));
+        paymentDate.add(Utility.changeDate(salesDue.get(1), Calendar.DATE, 5));
+
+        paymentDate.add(salesDue.get(2));
+
+        paymentDate.add(salesDue.get(3));
+        paymentDate.add(Utility.changeDate(salesDue.get(3), Calendar.DATE, 2));
+        paymentDate.add(Utility.changeDate(salesDue.get(3), Calendar.MONTH, 2));
+
+
+        paymentDate.add(salesDue.get(4));
+
+        paymentDate.add(salesDue.get(5));
+
+        paymentDate.add(salesDue.get(6));
+        paymentDate.add(Utility.changeDate(salesDue.get(6), Calendar.DATE, 6));
+
+
+        paymentDate.add(salesDue.get(7));
+
+        paymentDate.add(salesDue.get(8));
+
+        salePaymentList.add(2,totalAmount);
+
+        //fill in payment method
+        ArrayList paymentMethod = new ArrayList();
+        paymentMethod.add(context.getResources().getString(paymentModels[0]));
+
+        paymentMethod.add(context.getResources().getString(paymentModels[0]));
+        paymentMethod.add(context.getResources().getString(paymentModels[1]));
+
+        paymentMethod.add(context.getResources().getString(paymentModels[2]));
+
+        paymentMethod.add(context.getResources().getString(paymentModels[0]));
+        paymentMethod.add(context.getResources().getString(paymentModels[1]));
+        paymentMethod.add(context.getResources().getString(paymentModels[1]));
+
+
+        paymentMethod.add(context.getResources().getString(paymentModels[3]));
+
+        paymentMethod.add(context.getResources().getString(paymentModels[3]));
+
+        paymentMethod.add(context.getResources().getString(paymentModels[2]));
+        paymentMethod.add(context.getResources().getString(paymentModels[0]));
+
+
+        paymentMethod.add(context.getResources().getString(paymentModels[1]));
+
+        paymentMethod.add(context.getResources().getString(paymentModels[0]));
+
+        salePaymentList.add(3,paymentMethod);
+
+        //fill in payment amount
+        ArrayList paymentAmount = new ArrayList();
+        paymentAmount.add(salesAmount.get(0));
+
+
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(1))/2));
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(1)) / 2 - 100000));
+
+        paymentAmount.add(salesAmount.get(2));
+
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(3))/4));
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(3))/ 2));
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(3))/ 4));
+
+
+        paymentAmount.add("0");
+
+        paymentAmount.add("0");
+
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(6))-185000));
+        paymentAmount.add("185000");
+
+
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(7))*3/4));
+
+        paymentAmount.add(salesAmount.get(8));
+
+        salePaymentList.add(4,paymentAmount);
+
+        //fill in balance
+        ArrayList balanceState = new ArrayList();
+        balanceState.add(String.valueOf(true));
+
+
+        balanceState.add(String.valueOf(false));
+        balanceState.add(String.valueOf(false));
+
+        balanceState.add(salesAmount.get(2));
+
+        balanceState.add(String.valueOf(false));
+        balanceState.add(String.valueOf(false));
+        balanceState.add(String.valueOf(true));
+
+
+        balanceState.add(String.valueOf(false));
+
+        balanceState.add(String.valueOf(false));
+
+        balanceState.add(String.valueOf(false));
+        balanceState.add(String.valueOf(true));
+
+
+        balanceState.add(String.valueOf(false));
+
+        balanceState.add(String.valueOf(true));
+
+        salePaymentList.add(5,balanceState);
+
+    }
+    public static void setSaleOffTaxList(Context context){
+        //Coloumns are : salecode,Off/Tax,amount
+        //fill in Off/Tax
+        ArrayList codeOfSale = new ArrayList();
+        codeOfSale.add(salesCode.get(0));
+        codeOfSale.add(salesCode.get(0));
+
+        codeOfSale.add(salesCode.get(1));
+        codeOfSale.add(salesCode.get(1));
+
+        codeOfSale.add(salesCode.get(2));
+
+        codeOfSale.add(salesCode.get(3));
+
+        codeOfSale.add(salesCode.get(5));
+
+        codeOfSale.add(salesCode.get(6));
+        codeOfSale.add(salesCode.get(6));
+
+        codeOfSale.add(salesCode.get(7));
+
+        codeOfSale.add(salesCode.get(8));
+        codeOfSale.add(salesCode.get(8));
+        saleOffTaxList.add(0,codeOfSale);
+        //fill in off/Tax'
+        ArrayList offTax = new ArrayList();
+        offTax.add(context.getResources().getString(offTaxSticks[0]));
+        offTax.add(context.getResources().getString(offTaxSticks[1]));
+
+        offTax.add(context.getResources().getString(offTaxSticks[0]));
+        offTax.add(context.getResources().getString(offTaxSticks[1]));
+
+        offTax.add(context.getResources().getString(offTaxSticks[0]));
+
+        offTax.add(context.getResources().getString(offTaxSticks[0]));
+
+        offTax.add(context.getResources().getString(offTaxSticks[0]));
+
+        offTax.add(context.getResources().getString(offTaxSticks[0]));
+        offTax.add(context.getResources().getString(offTaxSticks[1]));
+
+        offTax.add(context.getResources().getString(offTaxSticks[0]));
+
+        offTax.add(context.getResources().getString(offTaxSticks[0]));
+        offTax.add(context.getResources().getString(offTaxSticks[1]));
+        saleOffTaxList.add(1,offTax);
+
+        //fill in amount
+
+        ArrayList amount = new ArrayList();
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(0))*9/100));
+        amount.add(Integer.toString(50000));
+
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(1))*9/100));
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(1))*2/100));
+
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(2))*5/100));
+
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(3))*6/100));
+
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(4))*3/100));
+
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(5))*9/100));
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(5))*3/100));
+
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(6))*9/100));
+
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(7))*9/100));
+        amount.add(Integer.toString(Integer.parseInt(salesAmount.get(8))*3/100));
+        saleOffTaxList.add(2,amount);
+
+    }
+
+
 }
 

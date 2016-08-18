@@ -152,4 +152,30 @@ public class Utility {
         }
     }
 
+    public static String changeDate(String date,int option,int amount) throws ParseException {
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        Date day = df.parse(date);
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.setTime(day);
+
+        switch (option){
+            case Calendar.DATE:
+                currentDate.roll(Calendar.DAY_OF_MONTH,amount);
+                break;
+            case Calendar.MONTH:
+                currentDate.roll(Calendar.MONTH,amount);
+                break;
+            case Calendar.YEAR:
+                currentDate.roll(Calendar.YEAR,amount);
+                break;
+            default:
+
+        }
+
+
+    return currentDate.toString();
+
+}
+
 }

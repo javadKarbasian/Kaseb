@@ -84,7 +84,7 @@ public class SaleAdapter extends BaseAdapter {
                     TextView saleDue = (TextView)view.findViewById(R.id.item_list_sale_due_date);
                     customerName.setText(Samples.sales.get(2).get(Samples.sales.get(1).indexOf(mData.get(position))));
                     saleCode.setText(Utility.doubleFormatter(Integer.parseInt(mData.get(position))));
-                    saleAmount.setText(Utility.formatPurchase(mContext, Utility.DecimalSeperation(mContext, Integer.parseInt(Samples.sales.get(3).get(Samples.sales.get(1).indexOf(mData.get(position)))))));
+                    saleAmount.setText(Utility.formatPurchase(mContext, Utility.DecimalSeperation(mContext, Integer.parseInt(Samples.sales.get(4).get(Samples.sales.get(1).indexOf(mData.get(position)))))));
                     if(!(Utility.getLocale(mContext).equals("IR"))){
                         saleDue.setText(Samples.sales.get(0).get(Samples.sales.get(1).indexOf(mData.get(position))));
 
