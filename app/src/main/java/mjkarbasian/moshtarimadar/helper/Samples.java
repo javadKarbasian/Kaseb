@@ -328,8 +328,8 @@ public class Samples {
 
         productsOfSale.add(productName.get(4));
 
-        productsOfSale.add(productName.get(3));
-        productsOfSale.add(productName.get(3));
+        productsOfSale.add(productName.get(1));
+        productsOfSale.add(productName.get(2));
         productsOfSale.add(productName.get(4));
         productsOfSale.add(productName.get(5));
 
@@ -348,7 +348,7 @@ public class Samples {
 
         productsOfSale.add(productName.get(5));
 
-        saleProductList.add(1,codeOfSale);
+        saleProductList.add(1,productsOfSale);
 
         //fill in price
         ArrayList<String> priceOfSale = new ArrayList<String>();

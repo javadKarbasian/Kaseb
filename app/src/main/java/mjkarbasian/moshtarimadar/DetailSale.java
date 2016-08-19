@@ -5,14 +5,21 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
+
+import mjkarbasian.moshtarimadar.adapters.DetailSaleItems;
+import mjkarbasian.moshtarimadar.helper.Utility;
 
 public class DetailSale extends AppCompatActivity {
     ListView itemsList;
     ListView paymentList;
     ListView offTaxList;
+
+    DetailSaleItems itemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +35,13 @@ public class DetailSale extends AppCompatActivity {
         paymentList = (ListView)findViewById(R.id.listview_sale_payments);
         offTaxList = (ListView)findViewById(R.id.listview_sale_tax_discount);
 
+        itemsAdapter = new DetailSaleItems(this,saleCode);
+        itemsList.setAdapter(itemsAdapter);
 
+        CardView itemCard =(CardView)findViewById(R.id.card_detail_sale_items_list);
+        ViewGroup.LayoutParams layoutParams = itemCard.getLayoutParams();
+        layoutParams.height = Utility.dipConverter(itemsList.getCount() * 48 + 30 ,this);//this is in pixels Must item height recognize dynamically
+        itemCard.setLayoutParams(layoutParams);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

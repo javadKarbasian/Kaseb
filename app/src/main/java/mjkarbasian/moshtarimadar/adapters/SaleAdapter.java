@@ -68,7 +68,7 @@ public class SaleAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return getItemViewType(position);
     }
 
     @Override

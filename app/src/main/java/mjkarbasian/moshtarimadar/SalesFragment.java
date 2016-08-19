@@ -138,8 +138,17 @@ public class SalesFragment extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(),DetailSale.class).putExtra("saleCode",sales.get(0).get(position));
-                startActivity(intent);
+                Intent intent = null;
+                if (id == 0) {
+
+                    if (position < sales.get(1).size()) {
+                        intent = new Intent(getActivity(), DetailSale.class).putExtra("saleCode", sales.get(1).get(position));
+                    } else {
+                        intent = new Intent(getActivity(), DetailSale.class).putExtra("saleCode", sales.get(1).get(sales.get(1).size()-1));
+
+                    }
+                    startActivity(intent);
+                }
             }
         });
             return rootView;
