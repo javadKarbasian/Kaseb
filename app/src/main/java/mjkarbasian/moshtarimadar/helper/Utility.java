@@ -158,7 +158,7 @@ public class Utility {
         Date day = df.parse(date);
         Calendar currentDate = Calendar.getInstance();
         currentDate.setTime(day);
-
+        String changedDate;
         switch (option){
             case Calendar.DATE:
                 currentDate.roll(Calendar.DAY_OF_MONTH,amount);
@@ -173,8 +173,8 @@ public class Utility {
 
         }
 
-
-    return currentDate.toString();
+        changedDate = Utility.formatDate(currentDate);
+    return changedDate;
 
 }
 

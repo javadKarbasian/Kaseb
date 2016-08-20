@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import mjkarbasian.moshtarimadar.adapters.DetailSaleItems;
+import mjkarbasian.moshtarimadar.adapters.DetailSalePayment;
 import mjkarbasian.moshtarimadar.helper.Utility;
 
 public class DetailSale extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class DetailSale extends AppCompatActivity {
     ListView offTaxList;
 
     DetailSaleItems itemsAdapter;
+    DetailSalePayment paymentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +40,21 @@ public class DetailSale extends AppCompatActivity {
         itemsAdapter = new DetailSaleItems(this,saleCode);
         itemsList.setAdapter(itemsAdapter);
 
+        paymentAdapter = new DetailSalePayment(this,saleCode);
+        paymentList.setAdapter(paymentAdapter);
+
+        //dynamically change cards height but it must modify
         CardView itemCard =(CardView)findViewById(R.id.card_detail_sale_items_list);
         ViewGroup.LayoutParams layoutParams = itemCard.getLayoutParams();
         layoutParams.height = Utility.dipConverter(itemsList.getCount() * 48 + 30 ,this);//this is in pixels Must item height recognize dynamically
         itemCard.setLayoutParams(layoutParams);
+
+        //dynamically change cards height but it must modify
+        CardView paymentCard =(CardView)findViewById(R.id.card_detail_sale_payments);
+        ViewGroup.LayoutParams layoutParamsPaymet = paymentCard.getLayoutParams();
+        layoutParamsPaymet.height = Utility.dipConverter(paymentList.getCount() * 48 + 30 ,this);//this is in pixels Must item height recognize dynamically
+        paymentCard.setLayoutParams(layoutParamsPaymet);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

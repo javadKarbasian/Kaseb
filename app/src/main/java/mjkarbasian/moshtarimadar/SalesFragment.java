@@ -131,7 +131,6 @@ public class SalesFragment extends Fragment {
                 }
             }
         }
-
             View rootView = inflater.inflate(R.layout.fragment_sales, container, false);
             mListView = (ListView) rootView.findViewById(R.id.list_view_sales);
             mListView.setAdapter(mSalesAdapter);

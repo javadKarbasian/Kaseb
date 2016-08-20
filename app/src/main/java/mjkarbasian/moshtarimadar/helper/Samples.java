@@ -487,7 +487,7 @@ public class Samples {
 
         paymentDate.add(salesDue.get(8));
 
-        salePaymentList.add(2,totalAmount);
+        salePaymentList.add(2,paymentDate);
 
         //fill in payment method
         ArrayList paymentMethod = new ArrayList();
