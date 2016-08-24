@@ -82,5 +82,30 @@
     <string name="non_member">عضو عادی</string>
     <string name="set_membership">تعیین نوع عضویت</string>
     <string name="silver_memer">عضو نقره ای</string>
+    <string name="detail_sales_payment_header">پرداختها</string>
+    <string name="detail_sales_products_items_header">لیست کالاها</string>
+    <string name="detail_sales_summary_customer_code">مشتری</string>
+    <string name="detail_sales_summary_discount">تخفیف</string>
+    <string name="detail_sales_summary_final_amount">مبلغ نهایی</string>
+    <string name="detail_sales_summary_header">خلاصه فاکتور</string>
+    <string name="detail_sales_summary_payment">پرداخت شده</string>
+    <string name="detail_sales_summary_tax">مالیات</string>
+    <string name="detail_sales_summary_total_amount">مبلغ کل</string>
+    <string name="detail_sales_summary_total_balance">مانده</string>
+    <string name="edit_detail_sale_action_description">این دکمه به شما اجازه تغییر در فاکتور ذخیره شده را می دهد</string>
+    <string name="fab_add_discount">ثبت تخفیف</string>
+    <string name="fab_add_payment">ثبت پرداخت</string>
+    <string name="fab_add_tax">ثبت مالیات</string>
+    <string name="payment_model_cash">نقد</string>
+    <string name="payment_model_cheque">چک</string>
+    <string name="payment_model_credit">امانی/اعتباری</string>
+    <string name="print_button">پرینت</string>
+    <string name="print_detail_sale_action_description">این دکمه به شما امکان پرینت از فکتور را می دهد</string>
+    <string name="sale_tax_off_stick">تخفیف</string>
+    <string name="sale_tax_tax_stick">مالیات</string>
+    <string name="save">ذخیره</string>
+    <string name="save_detail_sale_action_description">این دکمه فاکتور صادره را ثبت می کند.</string>
+    <string name="title_activity_detail_sale">فاکتور فروش</string>
+    <string name="detail_sales_taxDiscount_header">سایر موارد</string>
 
 </resources>

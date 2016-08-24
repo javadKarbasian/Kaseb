@@ -60,7 +60,7 @@
     <string name="sample_cost_name_3">dinner</string>
     <string name="sample_cost_name_4">transport</string>
     <string name="title_activity_products">Products</string>
-    <string name="fab_add_product">add product</string>
+    <string name="fab_add_product">Add product</string>
     <string name="sort_product_code">products code</string>
     <string name="sample_product_name">Samsung GE7</string>
     <string name="sample_product_name_2">Samsung GA7</string>
@@ -92,7 +92,7 @@
     <string name="detail_sales_summary_total_amount">Total amount</string>
     <string name="detail_sales_summary_total_balance">Balance</string>
     <string name="payment_model_cash">cash</string>
-    <string name="payment_model_pos">POS</string>
+    <string name="payment_model_pos" translatable="false">POS</string>
     <string name="payment_model_cheque">Cheque</string>
     <string name="payment_model_credit">Credit</string>
     <string name="sale_tax_tax_stick">Tax</string>
@@ -102,4 +102,11 @@
     <string name="detail_sales_summary_final_amount">Final amount</string>
     <string name="detail_sales_summary_payment">Payed</string>
     <string name="print_detail_sale_action_description">it prints your sale detail description and make a picture in your gallery</string>
+    <string name="fab_add_payment">Add payment</string>
+    <string name="fab_add_tax">Add tax</string>
+    <string name="fab_add_discount">Add discount</string>
+    <string name="edit_detail_sale_action_description">it let you edit your saved invoice</string>
+    <string name="print_button">print</string>
+    <string name="save">save</string>
+    <string name="save_detail_sale_action_description">it let you save your changes</string>
 </resources>

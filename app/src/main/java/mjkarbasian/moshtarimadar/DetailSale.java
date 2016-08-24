@@ -3,9 +3,9 @@ package mjkarbasian.moshtarimadar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,7 +26,7 @@ public class DetailSale extends AppCompatActivity {
     ListView itemsList;
     ListView paymentList;
     ListView offTaxList;
-
+    FloatingActionButton fab;
     DetailSaleItems itemsAdapter;
     DetailSalePayment paymentAdapter;
     DetailSaleTax taxAdapter;
@@ -90,15 +90,10 @@ public class DetailSale extends AppCompatActivity {
         finalAmount.setText(Utility.formatPurchase(this, Utility.DecimalSeperation(this, Double.parseDouble(Samples.saleSummary.get(4).get(index)))));
         payed.setText(Utility.formatPurchase(this,Utility.DecimalSeperation(this,Double.parseDouble(Samples.saleSummary.get(5).get(index)))));
         balance.setText(Utility.formatPurchase(this,Utility.DecimalSeperation(this,Double.parseDouble(Samples.saleSummary.get(6).get(index)))));
-// Utility.formatPurchase(this,Utility.DecimalSeperation(this,Double.parseDouble( )))
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+
+        fab = (FloatingActionButton) findViewById(R.id.fab_detail_sale);
+        fab.setVisibility(View.INVISIBLE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -107,7 +102,6 @@ public class DetailSale extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_detail_sale, menu);
-
         return true;
     }
     @Override
@@ -116,10 +110,32 @@ public class DetailSale extends AppCompatActivity {
             // Respond to the action bar's Up/Home button
             case R.id.print_button:
                 Toast.makeText(this, getApplicationContext().getResources().getString(R.string.print_detail_sale_action_description), Toast.LENGTH_LONG).show();
+                break;
+            case R.id.edit: {
+                Toast.makeText(this, getApplicationContext().getResources().getString(R.string.edit_detail_sale_action_description), Toast.LENGTH_LONG).show();
+                fab.setVisibility(View.VISIBLE);
+                break;
+            }
+            case R.id.save:
+                Toast.makeText(this, getApplicationContext().getResources().getString(R.string.save_detail_sale_action_description), Toast.LENGTH_LONG).show();
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
 
+    public void fab_detail_sale(View v) {
+        PopupMenu popup = new PopupMenu(this,v);
+        popup.getMenu().add(R.string.fab_add_product);
+        popup.getMenu().add(R.string.fab_add_payment);
+        popup.getMenu().add(R.string.fab_add_tax);
+        popup.getMenu().add(R.string.fab_add_discount);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                return true;
+            }
+        });
+        popup.show();//showing popup menu
+    }
 }
