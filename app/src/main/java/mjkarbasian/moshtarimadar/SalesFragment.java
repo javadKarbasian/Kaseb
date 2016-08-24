@@ -24,6 +24,7 @@ import static mjkarbasian.moshtarimadar.helper.Samples.setSaleFinalAmount;
 import static mjkarbasian.moshtarimadar.helper.Samples.setSaleOffTaxList;
 import static mjkarbasian.moshtarimadar.helper.Samples.setSalePaymentList;
 import static mjkarbasian.moshtarimadar.helper.Samples.setSaleProductList;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleSummary;
 import static mjkarbasian.moshtarimadar.helper.Samples.setSalesAmount;
 import static mjkarbasian.moshtarimadar.helper.Samples.setSalesCode;
 import static mjkarbasian.moshtarimadar.helper.Samples.setSalesCustomer;
@@ -76,6 +77,7 @@ public class SalesFragment extends Fragment {
             setSaleOffTaxList(getActivity());
             setSaleFinalAmount(getActivity());
             setSale();
+            setSaleSummary();
         }
 
         for (String date : salesDue)

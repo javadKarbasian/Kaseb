@@ -7,12 +7,19 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import mjkarbasian.moshtarimadar.adapters.DetailSaleItems;
 import mjkarbasian.moshtarimadar.adapters.DetailSalePayment;
+import mjkarbasian.moshtarimadar.adapters.DetailSaleTax;
+import mjkarbasian.moshtarimadar.helper.Samples;
 import mjkarbasian.moshtarimadar.helper.Utility;
 
 public class DetailSale extends AppCompatActivity {
@@ -22,6 +29,7 @@ public class DetailSale extends AppCompatActivity {
 
     DetailSaleItems itemsAdapter;
     DetailSalePayment paymentAdapter;
+    DetailSaleTax taxAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,11 @@ public class DetailSale extends AppCompatActivity {
         paymentAdapter = new DetailSalePayment(this,saleCode);
         paymentList.setAdapter(paymentAdapter);
 
+        taxAdapter = new DetailSaleTax(this,saleCode);
+        offTaxList.setAdapter(taxAdapter);
+
+
+
         //dynamically change cards height but it must modify
         CardView itemCard =(CardView)findViewById(R.id.card_detail_sale_items_list);
         ViewGroup.LayoutParams layoutParams = itemCard.getLayoutParams();
@@ -55,7 +68,29 @@ public class DetailSale extends AppCompatActivity {
         layoutParamsPaymet.height = Utility.dipConverter(paymentList.getCount() * 48 + 30 ,this);//this is in pixels Must item height recognize dynamically
         paymentCard.setLayoutParams(layoutParamsPaymet);
 
+        //dynamically change cards height but it must modify
+        CardView taxCard =(CardView)findViewById(R.id.card_detail_sale_tax_discounts);
+        ViewGroup.LayoutParams layoutParamsTax = paymentCard.getLayoutParams();
+        layoutParamsPaymet.height = Utility.dipConverter(offTaxList.getCount() * 32 + 30 ,this);//this is in pixels Must item height recognize dynamically
+        taxCard.setLayoutParams(layoutParamsTax);
 
+        //Fill in Sale summary
+        TextView cutomerName = (TextView)findViewById(R.id.card_detail_sale_customer_code);
+        TextView totalAmount = (TextView)findViewById(R.id.card_detail_sale_summary_total_amount);
+        TextView tax = (TextView)findViewById(R.id.card_detail_sale_summary_tax);
+        TextView discount = (TextView)findViewById(R.id.card_detail_sale_summary_discount);
+        TextView finalAmount = (TextView)findViewById(R.id.card_detail_sale_summary_final_amount);
+        TextView payed = (TextView)findViewById(R.id.card_detail_sale_summary_payed);
+        TextView balance = (TextView)findViewById(R.id.card_detail_sale_summary_balance);
+        int index = Samples.sales.get(1).indexOf(saleCode);
+        cutomerName.setText(Samples.sales.get(2).get(index));
+        totalAmount.setText(Utility.formatPurchase(this, Utility.DecimalSeperation(this, Double.parseDouble(Samples.saleSummary.get(1).get(index)))));
+        tax.setText(Utility.formatPurchase(this, Utility.DecimalSeperation(this, Double.parseDouble(Samples.saleSummary.get(2).get(index)))));
+        discount.setText(Utility.formatPurchase(this, Utility.DecimalSeperation(this, Double.parseDouble(Samples.saleSummary.get(3).get(index)))));
+        finalAmount.setText(Utility.formatPurchase(this, Utility.DecimalSeperation(this, Double.parseDouble(Samples.saleSummary.get(4).get(index)))));
+        payed.setText(Utility.formatPurchase(this,Utility.DecimalSeperation(this,Double.parseDouble(Samples.saleSummary.get(5).get(index)))));
+        balance.setText(Utility.formatPurchase(this,Utility.DecimalSeperation(this,Double.parseDouble(Samples.saleSummary.get(6).get(index)))));
+// Utility.formatPurchase(this,Utility.DecimalSeperation(this,Double.parseDouble( )))
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,5 +101,25 @@ public class DetailSale extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_detail_sale, menu);
+
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case R.id.print_button:
+                Toast.makeText(this, getApplicationContext().getResources().getString(R.string.print_detail_sale_action_description), Toast.LENGTH_LONG).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

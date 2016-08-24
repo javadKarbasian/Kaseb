@@ -97,4 +97,9 @@
     <string name="payment_model_credit">Credit</string>
     <string name="sale_tax_tax_stick">Tax</string>
     <string name="sale_tax_off_stick">Discount</string>
+    <string name="detail_sales_summary_tax">Tax</string>
+    <string name="detail_sales_summary_discount">Discount</string>
+    <string name="detail_sales_summary_final_amount">Final amount</string>
+    <string name="detail_sales_summary_payment">Payed</string>
+    <string name="print_detail_sale_action_description">it prints your sale detail description and make a picture in your gallery</string>
 </resources>

@@ -67,6 +67,8 @@ public class Samples {
     public static ArrayList<ArrayList<String>> saleProductList = new ArrayList<ArrayList<String>>();
     public static ArrayList<ArrayList<String>> salePaymentList = new ArrayList<ArrayList<String>>();
     public static ArrayList<ArrayList<String>> saleOffTaxList = new ArrayList<ArrayList<String>>();
+    public static ArrayList<ArrayList<String>> saleSummary = new ArrayList<ArrayList<String>>();
+
 
 
 
@@ -646,6 +648,76 @@ public class Samples {
         amount.add(Integer.toString(Integer.parseInt(salesAmount.get(7))*9/100));
         amount.add(Integer.toString(Integer.parseInt(salesAmount.get(8))*3/100));
         saleOffTaxList.add(2,amount);
+
+    }
+    public static void setSaleSummary(){
+        //Coloumns are : salecode,TotalItemAmount,Tax,Discount,finalAmount,Payment,Balance
+
+        //filll in saleCode
+        ArrayList codeOfSale = new ArrayList();
+        codeOfSale.add(salesCode.get(0));
+        codeOfSale.add(salesCode.get(1));
+        codeOfSale.add(salesCode.get(2));
+        codeOfSale.add(salesCode.get(3));
+        codeOfSale.add(salesCode.get(4));
+        codeOfSale.add(salesCode.get(5));
+        codeOfSale.add(salesCode.get(6));
+        codeOfSale.add(salesCode.get(7));
+        codeOfSale.add(salesCode.get(8));
+
+        saleSummary.add(0, codeOfSale);
+
+        //fill in TotlaAmounnt
+        saleSummary.add(1,salesAmount);
+
+        //fill in Tax and discount
+     ArrayList tax = new ArrayList();
+        tax.add(Integer.toString(Integer.parseInt(salesAmount.get(0))*9/100));
+        tax.add(Integer.toString(Integer.parseInt(salesAmount.get(1))*9/100));
+        tax.add(Integer.toString(Integer.parseInt(salesAmount.get(2))*5/100));
+        tax.add(Integer.toString(Integer.parseInt(salesAmount.get(3))*6/100));
+        tax.add("0");
+        tax.add(Integer.toString(Integer.parseInt(salesAmount.get(4))*3/100));
+        tax.add(Integer.toString(Integer.parseInt(salesAmount.get(5))*9/100));
+        tax.add(Integer.toString(Integer.parseInt(salesAmount.get(6))*9/100));
+        tax.add(Integer.toString(Integer.parseInt(salesAmount.get(7))*9/100));
+        saleSummary.add(2,tax);
+
+        //fill in off
+        ArrayList off = new ArrayList();
+        off.add(Integer.toString(50000));
+        off.add(Integer.toString(Integer.parseInt(salesAmount.get(1))*2/100));
+        off.add("0");
+        off.add("0");
+        off.add("0");
+        off.add("0");
+        off.add(Integer.toString(Integer.parseInt(salesAmount.get(5))*3/100));
+        off.add("0");
+        off.add(Integer.toString(Integer.parseInt(salesAmount.get(8))*3/100));
+        saleSummary.add(3,off);
+
+        //fill in payment
+        ArrayList paymentAmount = new ArrayList();
+        paymentAmount.add(salesAmount.get(0));
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(1)) / 2 + Integer.parseInt(salesAmount.get(1)) / 2 - 100000));
+        paymentAmount.add(salesAmount.get(2));
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(3))/4+Integer.parseInt(salesAmount.get(3))/ 2+Integer.parseInt(salesAmount.get(3))/ 4));
+        paymentAmount.add("0");
+        paymentAmount.add("0");
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(6))));
+        paymentAmount.add(Integer.toString(Integer.parseInt(salesAmount.get(7)) * 3 / 4));
+        paymentAmount.add(salesAmount.get(8));
+        saleSummary.add(4,paymentAmount);
+
+        //final amount
+        saleSummary.add(5,salesFinalAmount);
+
+        //fill in Balance
+        ArrayList balance = new ArrayList();
+        for(int i =0 ; i< codeOfSale.size();i++){
+            balance.add(i,Integer.toString(Integer.parseInt(saleSummary.get(1).get(i))-Integer.parseInt(saleSummary.get(4).get(i))));
+        }
+        saleSummary.add(6,balance);
 
     }
 
