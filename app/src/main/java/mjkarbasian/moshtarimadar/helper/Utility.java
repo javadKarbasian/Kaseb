@@ -13,6 +13,18 @@ import java.util.Locale;
 
 import mjkarbasian.moshtarimadar.R;
 
+import static mjkarbasian.moshtarimadar.helper.Samples.salesCode;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSale;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleDueDate;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleFinalAmount;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleOffTaxList;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSalePaymentList;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleProductList;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleSummary;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSalesAmount;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSalesCode;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSalesCustomer;
+
 
 /**
  * Created by family on 6/24/2016.
@@ -177,5 +189,40 @@ public class Utility {
     return changedDate;
 
 }
+
+    public static void initializer(Context context){
+
+        if(Samples.productCode.size()==0){
+            Samples.setProductCode();
+            Samples.setProductName(context);
+            Samples.setProductDate();
+            Samples.setProductPrice();
+            Samples.setProductPicture(context);
+            Samples.setProducts();
+            Samples.setProductsPriceList();
+
+        }
+
+        if(salesCode.size()==0)
+        {
+
+            setSalesCode();
+            setSaleDueDate();
+            setSalesCustomer(context);
+            setSalesAmount();
+            setSaleProductList();
+            try {
+                setSalePaymentList(context);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            setSaleOffTaxList(context);
+            setSaleFinalAmount(context);
+            setSale();
+            setSaleSummary();
+        }
+
+
+    }
 
 }

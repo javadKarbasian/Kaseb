@@ -22,6 +22,7 @@ import java.io.File;
 
 import mjkarbasian.moshtarimadar.helper.GalleryUtil;
 import mjkarbasian.moshtarimadar.helper.Samples;
+import mjkarbasian.moshtarimadar.helper.Utility;
 
 public class Customers extends DrawerActivity {
 
@@ -35,7 +36,7 @@ public class Customers extends DrawerActivity {
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        Utility.initializer(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_customers);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getLayoutInflater().inflate(R.layout.activity_customers,(FrameLayout)findViewById(R.id.container));

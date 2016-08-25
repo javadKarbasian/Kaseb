@@ -107,5 +107,16 @@
     <string name="save_detail_sale_action_description">این دکمه فاکتور صادره را ثبت می کند.</string>
     <string name="title_activity_detail_sale">فاکتور فروش</string>
     <string name="detail_sales_taxDiscount_header">سایر موارد</string>
+    <string name="title_activity_detail_products">مشخصات محصول/خدمت</string>
+    <string name="title_product_code">کد </string>
+    <string name="title_product_name">نام </string>
+    <string name="title_product_unit">واحد</string>
+    <string name="sample_unit">دستگاه</string>
+    <string name="title_card_price_list_buy_price">قیمت خرید</string>
+    <string name="title_card_price_list_sale_price">قیمت فروش</string>
+    <string name="detail_product_action_description">این دکمه به شما امکان ثبت قیمت خرید و قیمت فروش را می دهد</string>
+    <string name="title_card_detail_product">مشخصات کالا</string>
+    <string name="share_action_description">این دکمه به شما امکان اشتراک گذاری اطلاعات محصول را می دهد</string>
+    <string name="edit_detail_product_action_description">این دکمه به شما اجازه تغییر در اطلاعات محصول/خدمت را می دهد</string>
 
 </resources>

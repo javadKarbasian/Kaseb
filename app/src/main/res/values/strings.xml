@@ -109,4 +109,15 @@
     <string name="print_button">print</string>
     <string name="save">save</string>
     <string name="save_detail_sale_action_description">it let you save your changes</string>
+    <string name="title_activity_detail_products">DetailProducts</string>
+    <string name="title_product_name">Name</string>
+    <string name="title_product_code">Code</string>
+    <string name="title_product_unit">Unit</string>
+    <string name="title_card_price_list_buy_price">Buy price</string>
+    <string name="title_card_price_list_sale_price">Sale Price</string>
+    <string name="sample_unit">Device</string>
+    <string name="detail_product_action_description">it let you register buy and sale price</string>
+    <string name="title_card_detail_product">Product Information</string>
+    <string name="share_action_description">it share your product detail information</string>
+    <string name="edit_detail_product_action_description">it let you edit product information</string>
 </resources>

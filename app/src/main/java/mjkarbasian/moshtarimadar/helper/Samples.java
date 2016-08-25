@@ -43,6 +43,9 @@ public class Samples {
     public static double[] customerDebateBalance = {1500000,1200000};
     public static String[] customerDebtAmount={"0","455,000","100,000"};
     public static String[] debtorsMobileNumber={"09124381232","09124543212"};
+
+
+
     public static ArrayList<String> salesCode = new ArrayList<String>();
     public static ArrayList<String> salesDue = new ArrayList<String>();
     public static ArrayList<ArrayList<String>> sales = new ArrayList<ArrayList<String>>();
@@ -57,10 +60,12 @@ public class Samples {
     public static ArrayList<String> costsCode = new ArrayList<String>();
     public static ArrayList<String> costsAmount =new ArrayList<String>();
     public static ArrayList<ArrayList<String>> costs = new ArrayList<ArrayList<String>>();
+
     public static ArrayList<String> productName = new ArrayList<String>();
     public static ArrayList<String> productCode = new ArrayList<String>();
     public static ArrayList<String> productDate = new ArrayList<String>();
     public static ArrayList<String> productPrice = new ArrayList<String>();
+    public static ArrayList<String> productPics = new ArrayList<String>();
     public static ArrayList<ArrayList<String>> products = new ArrayList<ArrayList<String>>();
 
     //sale detail tables and columns
@@ -69,7 +74,8 @@ public class Samples {
     public static ArrayList<ArrayList<String>> saleOffTaxList = new ArrayList<ArrayList<String>>();
     public static ArrayList<ArrayList<String>> saleSummary = new ArrayList<ArrayList<String>>();
 
-
+    //product detail tables and columns
+    public static ArrayList<ArrayList<String>> productPriceList = new ArrayList<ArrayList<String>>();
 
 
     public static void setSalesCode(){
@@ -275,6 +281,12 @@ public class Samples {
         productPrice.add("120000");
         productPrice.add("560000");
         productPrice.add("760000");
+    }
+    public static void setProductPicture(Context context){
+        int[] productPicture = new int[]{R.raw.pr01, R.raw.pr02, R.raw.pr03, R.raw.pr04, R.raw.pr05, R.raw.pr06};
+        for(int pic:productPicture){
+            productPics.add(Integer.toString(pic));
+        }
     }
     public static void setProducts(){
         Collections.reverse(productCode);
@@ -721,6 +733,116 @@ public class Samples {
 
     }
 
+    public static void setProductsPriceList(){
+        //Coloumns are productCode,Date,time,buyPrice,Price for sale,picture
+
+        //fill in productCode
+        ArrayList prCode = new ArrayList();
+        prCode.add(productCode.get(0));
+        prCode.add(productCode.get(0));
+
+        prCode.add(productCode.get(1));
+        prCode.add(productCode.get(1));
+        prCode.add(productCode.get(1));
+
+        prCode.add(productCode.get(2));
+
+        prCode.add(productCode.get(3));
+
+        prCode.add(productCode.get(4));
+        prCode.add(productCode.get(4));
+
+        prCode.add(productCode.get(5));
+
+
+        productPriceList.add(0,prCode);
+
+        //fill in Date
+        ArrayList date = new ArrayList();
+        date.add("2016/8/12");
+        date.add("2016/8/13");
+
+        date.add("2016/8/10");
+        date.add("2016/8/09");
+        date.add("2016/8/11");
+
+        date.add("2016/8/16");
+
+        date.add("2016/8/18");
+
+        date.add("2016/8/20");
+        date.add("2016/8/21");
+
+        date.add("2016/8/22");
+
+
+        productPriceList.add(1,date);
+
+        //fill in time
+        ArrayList time = new ArrayList();
+        time.add("9:28");
+        time.add("10:15");
+
+        time.add("11:45");
+        time.add("16:30");
+        time.add("12:22");
+
+        time.add("18:48");
+
+        time.add("9:20");
+
+        time.add("11:38");
+        time.add("19:20");
+
+        time.add("15:48");
+
+
+        productPriceList.add(2,time);
+
+        //fill in buy Price
+        ArrayList bPrice = new ArrayList();
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(0))-5000));
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(0))-3000));
+
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(1))-5000));
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(1))-4000));
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(1))-3000));
+
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(2))-3000));
+
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(3))-3000));
+
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(4))-2000));
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(4))-6000));
+
+        bPrice.add(Integer.toString(Integer.parseInt(productPrice.get(5))-2000));
+
+
+        productPriceList.add(3,bPrice);
+
+        //fill in sell Price
+        ArrayList sPrice = new ArrayList();
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(0))-1000));
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(0))));
+
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(1))-3000));
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(1))-2000));
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(1))));
+
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(2))));
+
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(3))));
+
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(4))));
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(4))));
+
+        sPrice.add(Integer.toString(Integer.parseInt(productPrice.get(5))));
+
+        productPriceList.add(4,sPrice);
+
+        //fill in picture
+        productPriceList.add(5,productPics);
+    }
 
 }
 

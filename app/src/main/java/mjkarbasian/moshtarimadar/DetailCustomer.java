@@ -14,9 +14,23 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+
 import mjkarbasian.moshtarimadar.adapters.DetailCustomerAdapter;
 import mjkarbasian.moshtarimadar.helper.Samples;
 import mjkarbasian.moshtarimadar.helper.Utility;
+
+import static mjkarbasian.moshtarimadar.helper.Samples.salesCode;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSale;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleDueDate;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleFinalAmount;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleOffTaxList;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSalePaymentList;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleProductList;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSaleSummary;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSalesAmount;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSalesCode;
+import static mjkarbasian.moshtarimadar.helper.Samples.setSalesCustomer;
 
 public class DetailCustomer extends AppCompatActivity {
     Toolbar mToolbar;
@@ -51,6 +65,25 @@ public class DetailCustomer extends AppCompatActivity {
             else {
                 customerAvatar.setImageResource(R.drawable.account);
             }
+        }
+
+        if(salesCode.size()==0)
+        {
+
+            setSalesCode();
+            setSaleDueDate();
+            setSalesCustomer(this);
+            setSalesAmount();
+            setSaleProductList();
+            try {
+                setSalePaymentList(this);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            setSaleOffTaxList(this);
+            setSaleFinalAmount(this);
+            setSale();
+            setSaleSummary();
         }
 
 

@@ -93,6 +93,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mjkarbasian.moshtarimadar.Sales" />
         </activity>
+        <activity
+            android:name=".DetailProducts"
+            android:label="@string/title_activity_detail_products"
+            android:parentActivityName=".Products"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mjkarbasian.moshtarimadar.Products" />
+        </activity>
     </application>
 
 </manifest>
