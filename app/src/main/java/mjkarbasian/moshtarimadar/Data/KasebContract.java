@@ -65,7 +65,7 @@ public class KasebContract {
         //Defining columns
         public static final String TABLE_NAME = "customers";
         public static final String COLUMN_FIRST_NAME = "first_name";
-        public static final String COLUMN_LAST_MAME = "last_name";
+        public static final String COLUMN_LAST_NAME = "last_name";
         public static final String COLUMN_BIRTHDAY = "birthday";
         public static final String COLUMN_STATE_ID = "state_id";
         public static final String COLUMN_PHONE_MOBILE= "phone_mobile";
