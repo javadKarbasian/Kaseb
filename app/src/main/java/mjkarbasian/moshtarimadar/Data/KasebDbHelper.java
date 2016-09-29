@@ -91,13 +91,62 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 " FOREIGN KEY (" + KasebContract.DetailSaleTaxes.COLUMN_TAX_TYPE_ID + ") REFERENCES "  +
                 KasebContract.TaxTypes.TABLE_NAME + " ("+ KasebContract.TaxTypes._ID + "), " +
                 KasebContract.DetailSaleTaxes.COLUMN_AMOUNT + " REAL NOT NULL" + ");";
-
-
-
+        //create paymentMethods table
+        final String CREATE_PAYMENT_METHODS_TABLE = "CREATE TABLE " + KasebContract.PaymentMethods.TABLE_NAME + "(" +
+                KasebContract.PaymentMethods._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                KasebContract.PaymentMethods.COLUMN_PAYMENT_METHOD_POINTER+ " INTEGER NOT NULL" + ");";
+        //create taxtypes table
+        final String CREATE_TAX_TYPES_TABLE = "CREATE TABLE " + KasebContract.TaxTypes.TABLE_NAME + "(" +
+                KasebContract.TaxTypes._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                KasebContract.TaxTypes.COLUMN_TAX_TYPE_POINTER+ " INTEGER NOT NULL" + ");";
+        //create product table
+        final String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + KasebContract.Products.TABLE_NAME + "(" +
+                KasebContract.Products._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                KasebContract.Products.COLUMN_PRODUCT_NAME + " TEXT NOT NULL UNIQUE," +
+                KasebContract.Products.COLUMN_PRODUCT_CODE + " TEXT," +
+                KasebContract.Products.COLUMN_DESCRIPTION + " TEXT,"+
+                KasebContract.Products.COLUMN_UNIT + " TEXT"+ ");";
+        //create product history table
+        final String CREATE_PRODUCT_HISTORY = "CREATE TABLE " + KasebContract.ProductHistory.TABLE_NAME + "(" +
+                KasebContract.ProductHistory._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                " FOREIGN KEY (" + KasebContract.ProductHistory.COLUMN_PRODUCT_ID + ") REFERENCES "  +
+                KasebContract.Products.TABLE_NAME + " ("+ KasebContract.Products._ID + "), " +
+                KasebContract.ProductHistory.COLUMN_COST + " REAL NOT NULL," +
+                KasebContract.ProductHistory.COLUMN_DATE + " TEXT NOT NULL," +
+                KasebContract.ProductHistory.COLUMN_QUANTITY + " REAL NOT NULL,"+
+                KasebContract.ProductHistory.COLUMN_SALE_PRICE + " REAL NOT NULL"+ ");";
+        //create cost table
+        final String CREATE_COSTS_TABLE = "CREATE TABLE " + KasebContract.Costs.TABLE_NAME + "(" +
+                KasebContract.Costs._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                " FOREIGN KEY (" + KasebContract.Costs.COLUMN_COST_TYPE_ID + ") REFERENCES "  +
+                KasebContract.CostTypes.TABLE_NAME + " ("+ KasebContract.CostTypes._ID + "), " +
+                KasebContract.Costs.COLUMN_COST_NAME + " TEXT NOT NULL," +
+                KasebContract.Costs.COLUMN_COST_CODE + " TEXT," +
+                KasebContract.Costs.COLUMN_AMOUNT + " REAL NOT NULL,"+
+                KasebContract.Costs.COLUMN_DATE + " TEXT NOT NULL,"+
+                KasebContract.Costs.COLUMN_DESCRIPTION + " TEXT"+
+                ");";
+        //create cost types table
+        final String CREATE_COST_TYPES_TABLE = "CREATE TABLE " + KasebContract.CostTypes.TABLE_NAME + "(" +
+                KasebContract.CostTypes._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                KasebContract.CostTypes.COLUMN_COST_TYPE_POINTER+ " INTEGER NOT NULL" + ");";
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.Customers.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.State.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.Sales.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.DetailSale.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.DetailSalePayments.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.DetailSaleTaxes.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.DetailSaleProducts.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.PaymentMethods.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.TaxTypes.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.Products.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.ProductHistory.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.Costs.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + KasebContract.CostTypes.TABLE_NAME);
+        onCreate(db);
     }
 }
