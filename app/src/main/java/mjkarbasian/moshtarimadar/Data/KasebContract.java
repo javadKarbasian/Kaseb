@@ -99,7 +99,7 @@ public class KasebContract {
         public static final String COLUMN_STATE_POINTER = "state_pointer";
 
         //Defining Uri Maker functions : content://AUTHORITY/state/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildStateUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -120,7 +120,7 @@ public class KasebContract {
 
 
         //Defining Uri Maker functions : content://AUTHORITY/SaleEntry/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildSalesUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -146,7 +146,7 @@ public class KasebContract {
         public static final String COLUMN_IS_BALANCED = "is_balanced";
 
         //Defining Uri Maker functions : content://AUTHORITY/DetailSale/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildDetailSaleUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -167,7 +167,7 @@ public class KasebContract {
         public static final String COLUMN_AMOUNT = "amount";
 
         //Defining Uri Maker functions : content://AUTHORITY/DetailSalePayments/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildDetailSalePaymentsUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -188,7 +188,7 @@ public class KasebContract {
         public static final String COLUMN_AMOUNT = "amount";
 
         //Defining Uri Maker functions : content://AUTHORITY/DetailSaleProducts/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildDetailSaleProducts(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -208,7 +208,7 @@ public class KasebContract {
         public static final String COLUMN_AMOUNT = "amount";
 
         //Defining Uri Maker functions : content://AUTHORITY/DetailSaleTaxes/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildDetailSaleTaxesUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -226,7 +226,7 @@ public class KasebContract {
         public static final String COLUMN_PAYMENT_METHOD_POINTER = "payment_method_pointer";
 
         //Defining Uri Maker functions : content://AUTHORITY/PaymentMethods/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildPaymentMethodsUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -244,7 +244,7 @@ public class KasebContract {
         public static final String COLUMN_TAX_TYPE_POINTER = "tax_type_pointer";
 
         //Defining Uri Maker functions : content://AUTHORITY/tax_types/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildTaxTypesUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -266,8 +266,11 @@ public class KasebContract {
 
 
         //Defining Uri Maker functions : content://AUTHORITY/products/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildProductsUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        public static Uri detailSaleProducts(long id,long detailSaleId){
+            return null;
+        }
     }
 
     public static final class ProductHistory implements BaseColumns {
@@ -288,7 +291,7 @@ public class KasebContract {
         public static final String COLUMN_DATE = "date";
 
         //Defining Uri Maker functions : content://AUTHORITY/product_history/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildProductHistoryUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -312,7 +315,7 @@ public class KasebContract {
 
 
         //Defining Uri Maker functions : content://AUTHORITY/DetailSale/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildCostsUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
@@ -330,7 +333,7 @@ public class KasebContract {
         public static final String COLUMN_COST_TYPE_POINTER = "cost_type_pointer";
 
         //Defining Uri Maker functions : content://AUTHORITY/cost_types/id
-        public static Uri buildCustomerUri(long id){
+        public static Uri buildCostTypesUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
     }
 
