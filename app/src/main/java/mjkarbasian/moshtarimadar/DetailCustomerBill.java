@@ -26,6 +26,7 @@ public class DetailCustomerBill extends Fragment {
         //it most change to recyclerview for scrolling http://stackoverflow.com/questions/35577206/listview-inside-viewpager-not-scrolling
         ListView customerBills = (ListView)view.findViewById(R.id.list_view_customer_bills);
         if(Samples.sales.size()==0){
+            String salamchetori3 = "khoobam3";
             Samples.setSaleDueDate();
             Samples.setSalesAmount();
             Samples.setSalesCode();
