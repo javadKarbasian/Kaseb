@@ -40,7 +40,6 @@ public class DetailProductsFragment extends Fragment {
         TextView productName = (TextView)view.findViewById(R.id.detail_product_name);
         TextView Code = (TextView)view.findViewById(R.id.detail_product_code);
         TextView unit = (TextView)view.findViewById(R.id.detail_product_unit);
-
         productName.setText(Samples.products.get(2).get(position));
         Code.setText(Utility.doubleFormatter(Double.parseDouble(productCode)));
         unit.setText(getActivity().getResources().getString(R.string.sample_unit));

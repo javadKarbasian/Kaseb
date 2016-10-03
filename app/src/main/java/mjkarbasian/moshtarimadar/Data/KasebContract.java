@@ -45,13 +45,15 @@ public class KasebContract {
     // 14)content://AUTHORITY/tax_types
     // 15)content://AUTHORITY/tax_types/id
     // 16)content://AUTHORITY/detail_sale_products
-    // 16)content://AUTHORITY/detail_sale_products/id
-    // 17)content://AUTHORITY/detail_sale_payments
-    // 17)content://AUTHORITY/detail_sale_payments/id
-    // 18)content://AUTHORITY/detail_sale_tax
-    // 18)content://AUTHORITY/detail_sale_tax/id
-    // 19)content://AUTHORITY/state
-    // 19)content://AUTHORITY/state/id
+    // 17)content://AUTHORITY/detail_sale_products/id
+    // 18)content://AUTHORITY/detail_sale_payments
+    // 19)content://AUTHORITY/detail_sale_payments/id
+    // 20)content://AUTHORITY/detail_sale_tax
+    // 21)content://AUTHORITY/detail_sale_tax/id
+    // 22)content://AUTHORITY/state
+    // 23)content://AUTHORITY/state/id
+    //new uris
+    //24)content://AUTHORITY/costs?costTypeID=type
 
     public static final class Customers implements BaseColumns {
 
@@ -317,6 +319,14 @@ public class KasebContract {
         //Defining Uri Maker functions : content://AUTHORITY/DetailSale/id
         public static Uri buildCostsUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        //define Uri to query cost by cost types
+        public static Uri costsByType(long costTypeID,String type){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_COST_TYPE_ID, type).build();
+        }
+        //shall need uri to query costs by date
+        public static Uri costByDate(String date){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_DATE,date).build();
+        }
     }
 
     public static final class CostTypes implements BaseColumns {

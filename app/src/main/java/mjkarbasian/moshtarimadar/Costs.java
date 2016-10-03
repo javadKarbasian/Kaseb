@@ -23,7 +23,6 @@ public class Costs extends DrawerActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
     }
     public void fab_costs(View v){
 //        Snackbar.make(v, "Fab sales", Snackbar.LENGTH_LONG)
