@@ -24,7 +24,6 @@ public class Debators extends DrawerActivity {
         mListView =(ListView) findViewById(R.id.list_view_debators);
         mDebatorAdapter = new DebatorAdapter(this);
         mListView.setAdapter(mDebatorAdapter);
-        String salamchetori5 = "khoobam5";
     }
 
     @Override

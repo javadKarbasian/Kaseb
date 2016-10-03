@@ -22,7 +22,6 @@ public class Costs extends DrawerActivity {
         getLayoutInflater().inflate(R.layout.activity_costs, (FrameLayout) findViewById(R.id.container));
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        String salamchetori4 = "khoobam4";
 
     }
     public void fab_costs(View v){
