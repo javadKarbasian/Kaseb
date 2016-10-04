@@ -1,10 +1,13 @@
 package mjkarbasian.moshtarimadar.Data;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 import android.util.Log;
 import java.util.HashSet;
+
+import mjkarbasian.moshtarimadar.Tool.TestUtilities;
 
 /**
  * Created by Unique on 10/3/2016.
@@ -20,8 +23,7 @@ public class TestDb extends AndroidTestCase {
     /* This function gets called before each test is executed to delete the database.
        This makes sure that we always have a clean test.*/
 
-    public void setUp()
-    {
+    public void setUp() {
         deleteTheDatabase();
     }
 
@@ -381,7 +383,7 @@ public class TestDb extends AndroidTestCase {
         c.close();
         //endregion
 
-        //  region 13 -Customers table- columns?
+        // region 13 -Customers table- columns?
         c = db.rawQuery("PRAGMA table_info(" + KasebContract.Customers.TABLE_NAME + ")",
                 null);
 
@@ -420,4 +422,310 @@ public class TestDb extends AndroidTestCase {
 
         db.close();
     }
+
+    public void testStateTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createStateValues();
+        long StateRowId = db.insert(KasebContract.State.TABLE_NAME, null, testValues);
+        assertTrue(StateRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.State.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -State table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -State table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.State.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -State table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    public void testCostTypesTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createCostTypesValues();
+        long CostTypesRowId = db.insert(KasebContract.CostTypes.TABLE_NAME, null, testValues);
+        assertTrue(CostTypesRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.CostTypes.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -CostTypes table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -CostTypes table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.CostTypes.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -CostTypes table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    public void testCustomersTable() {
+        long StateRowId = insertStateTable();
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createCustomersValues(StateRowId);
+        long CustomersRowId = db.insert(KasebContract.Customers.TABLE_NAME, null, testValues);
+        assertTrue(CustomersRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.Customers.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -Customers table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -Customers table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.Customers.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -Customers table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    public void testCostTable() {
+        long CostTypesRowId = insertCostTypesTable();
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createCostsValues(CostTypesRowId);
+        long CostsRowId = db.insert(KasebContract.Costs.TABLE_NAME, null, testValues);
+        assertTrue(CostsRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.Costs.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -Costs table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -Costs table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.Costs.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -Costs table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    public void testPaymentMethodsTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createPaymentMethodsValues();
+        long PaymentMethodsRowId = db.insert(KasebContract.PaymentMethods.TABLE_NAME, null, testValues);
+        assertTrue(PaymentMethodsRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.PaymentMethods.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -PaymentMethods table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -PaymentMethods table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.PaymentMethods.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -PaymentMethods table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    public void testTaxTypesTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createTaxTypesValues();
+        long TaxTypesRowId = db.insert(KasebContract.TaxTypes.TABLE_NAME, null, testValues);
+        assertTrue(TaxTypesRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.TaxTypes.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -TaxTypes table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -TaxTypes table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.TaxTypes.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -TaxTypes table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    public void testProductsTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createProductsValues();
+        long ProductsRowId = db.insert(KasebContract.Products.TABLE_NAME, null, testValues);
+        assertTrue(ProductsRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.Products.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -Products table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -Products table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.Products.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -Products table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    public void testSalesTable() {
+        long StateRowId = insertStateTable();
+        long CustomersRowId = insertCustomersTable(StateRowId);
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createSalesValues(CustomersRowId);
+        long SalesRowId = db.insert(KasebContract.Sales.TABLE_NAME, null, testValues);
+        assertTrue(SalesRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.Sales.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -Sales table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -Sales table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.Sales.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -Sales table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    public long insertStateTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createStateValues();
+        long StateRowId = db.insert(KasebContract.State.TABLE_NAME, null, testValues);
+        return StateRowId;
+    }
+
+    public long insertCostTypesTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createCostTypesValues();
+        long CostTypesRowId = db.insert(KasebContract.CostTypes.TABLE_NAME, null, testValues);
+        return CostTypesRowId;
+    }
+
+    public long insertPaymentMethodsTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createPaymentMethodsValues();
+        long PaymentMethodsRowId = db.insert(KasebContract.PaymentMethods.TABLE_NAME, null, testValues);
+        return PaymentMethodsRowId;
+    }
+
+    public long insertTaxTypesTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createTaxTypesValues();
+        long TaxTypesRowId = db.insert(KasebContract.TaxTypes.TABLE_NAME, null, testValues);
+        return TaxTypesRowId;
+    }
+
+    public long insertProductsTable() {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createProductsValues();
+        long ProductsRowId = db.insert(KasebContract.Products.TABLE_NAME, null, testValues);
+        return ProductsRowId;
+    }
+
+    public long insertCustomersTable(long StateRowId) {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createCustomersValues(StateRowId);
+        long CustomersRowId = db.insert(KasebContract.Customers.TABLE_NAME, null, testValues);
+        return CustomersRowId;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

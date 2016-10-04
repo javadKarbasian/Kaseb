@@ -20,7 +20,7 @@ public class KasebDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        //creating customers Table
+        //region 1 create customers Table
         final String CREATE_CUSTOMERS_TABLE = "CREATE TABLE " + KasebContract.Customers.TABLE_NAME + "(" +
                 KasebContract.Customers._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 KasebContract.Customers.COLUMN_FIRST_NAME + " TEXT NOT NULL," +
@@ -39,11 +39,15 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 KasebContract.Customers.COLUMN_ADDRESS_POSTAL_CODE+ " TEXT,"+
                 KasebContract.Customers.COLUMN_DESCRIPTION+" TEXT,"+
                 KasebContract.Customers.COLUMN_IS_DELETED+ " BLOB NOT NULL" + ");";
-        //creating state Table
+        //endregion
+
+        //region 2 create state Table
         final String CREATE_STATE_TABLE = "CREATE TABLE " + KasebContract.State.TABLE_NAME + "(" +
                 KasebContract.State._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 KasebContract.State.COLUMN_STATE_POINTER + " INTEGER NOT NULL" + ");";
-        //creating sales table
+        //endregion
+
+        //region 3 create sales table
         final String CREATE_SALES_TABLE = "CREATE TABLE " + KasebContract.Sales.TABLE_NAME + "(" +
                 KasebContract.Sales._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 KasebContract.Sales.COLUMN_SALE_CODE + " TEXT NOT NULL," +
@@ -51,7 +55,9 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 KasebContract.Customers.TABLE_NAME + " ("+KasebContract.Customers._ID+"), "+
                 KasebContract.Sales.COLUMN_IS_DELETED + " BLOB NOT NULL" +
                 ");";
-        //creating detail sale taBLE
+        //endregion
+
+        //region 4 create detail sale taBLE
         final String CREATE_DETAIL_SALE_TABLE = "CREATE TABLE " + KasebContract.DetailSale.TABLE_NAME+ "(" +
                 KasebContract.DetailSale._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " FOREIGN KEY (" + KasebContract.DetailSale.COLUMN_SALE_ID + ") REFERENCES "+
@@ -65,7 +71,9 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 KasebContract.DetailSale.COLUMN_TOTAL_PAID+ " REAL NOT NULL,"+
                 KasebContract.DetailSale.COLUMN_IS_BALANCED+ " BLOB NOT NULL"+
                 ");";
-        //create detail sale payment table
+        //endregion
+
+        //region 5 create detail sale payment table
         final String CREATE_DETAIL_SALE_PAYMENT_TABLE = "CREATE TABLE " + KasebContract.DetailSalePayments.TABLE_NAME+ "(" +
                 KasebContract.DetailSalePayments._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " FOREIGN KEY (" + KasebContract.DetailSalePayments.COLUMN_DETAIL_SALE_ID + ") REFERENCES "  +
@@ -74,7 +82,9 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 KasebContract.PaymentMethods.TABLE_NAME + " ("+ KasebContract.PaymentMethods._ID + "), " +
                 KasebContract.DetailSalePayments.COLUMN_DUE_DATE + " TEXT NOT NULL," +
                 KasebContract.DetailSalePayments.COLUMN_AMOUNT + " REAL NOT NULL" + ");";
-        //create detail sale product table
+        //endregion
+
+        //region 6 create detail sale product table
         final String CREATE_DETAIL_SALE_PRODUCT_TABLE = "CREATE TABLE " + KasebContract.DetailSaleProducts.TABLE_NAME+ "(" +
                 KasebContract.DetailSaleProducts._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " FOREIGN KEY (" + KasebContract.DetailSaleProducts.COLUMN_DETAIL_SALE_ID + ") REFERENCES "  +
@@ -83,7 +93,9 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 KasebContract.Products.TABLE_NAME + " ("+ KasebContract.Products._ID + "), " +
                 KasebContract.DetailSaleProducts.COLUMN_QUANTITY + " INTEGER NOT NULL," +
                 KasebContract.DetailSaleProducts.COLUMN_AMOUNT + " REAL NOT NULL" + ");";
-        //create detail sale taxes table
+        //endregion
+
+        //region 7 create detail sale taxes table
         final String CREATE_DETAIL_SALE_TAXES_TABLE = "CREATE TABLE " + KasebContract.DetailSaleTaxes.TABLE_NAME+ "(" +
                 KasebContract.DetailSaleTaxes._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " FOREIGN KEY (" + KasebContract.DetailSaleTaxes.COLUMN_DETAIL_SALE_ID + ") REFERENCES "  +
@@ -91,22 +103,30 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 " FOREIGN KEY (" + KasebContract.DetailSaleTaxes.COLUMN_TAX_TYPE_ID + ") REFERENCES "  +
                 KasebContract.TaxTypes.TABLE_NAME + " ("+ KasebContract.TaxTypes._ID + "), " +
                 KasebContract.DetailSaleTaxes.COLUMN_AMOUNT + " REAL NOT NULL" + ");";
-        //create paymentMethods table
+        //endregion
+
+        //region 8 create paymentMethods table
         final String CREATE_PAYMENT_METHODS_TABLE = "CREATE TABLE " + KasebContract.PaymentMethods.TABLE_NAME + "(" +
                 KasebContract.PaymentMethods._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 KasebContract.PaymentMethods.COLUMN_PAYMENT_METHOD_POINTER+ " INTEGER NOT NULL" + ");";
-        //create taxtypes table
+        //endregion
+
+        //region 9 create taxtypes table
         final String CREATE_TAX_TYPES_TABLE = "CREATE TABLE " + KasebContract.TaxTypes.TABLE_NAME + "(" +
                 KasebContract.TaxTypes._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 KasebContract.TaxTypes.COLUMN_TAX_TYPE_POINTER+ " INTEGER NOT NULL" + ");";
-        //create product table
+        //endregion
+
+        //region 10 create product table
         final String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + KasebContract.Products.TABLE_NAME + "(" +
                 KasebContract.Products._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 KasebContract.Products.COLUMN_PRODUCT_NAME + " TEXT NOT NULL UNIQUE," +
                 KasebContract.Products.COLUMN_PRODUCT_CODE + " TEXT," +
                 KasebContract.Products.COLUMN_DESCRIPTION + " TEXT,"+
-                KasebContract.Products.COLUMN_UNIT + " TEXT"+ ");";
-        //create product history table
+                KasebContract.Products.COLUMN_UNIT + " TEXT);";
+        //endregion
+
+        //region 11 create product history table
         final String CREATE_PRODUCT_HISTORY = "CREATE TABLE " + KasebContract.ProductHistory.TABLE_NAME + "(" +
                 KasebContract.ProductHistory._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " FOREIGN KEY (" + KasebContract.ProductHistory.COLUMN_PRODUCT_ID + ") REFERENCES "  +
@@ -115,7 +135,9 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 KasebContract.ProductHistory.COLUMN_DATE + " TEXT NOT NULL," +
                 KasebContract.ProductHistory.COLUMN_QUANTITY + " REAL NOT NULL,"+
                 KasebContract.ProductHistory.COLUMN_SALE_PRICE + " REAL NOT NULL"+ ");";
-        //create cost table
+        //endregion
+
+        //region 12 create cost table
         final String CREATE_COSTS_TABLE = "CREATE TABLE " + KasebContract.Costs.TABLE_NAME + "(" +
                 KasebContract.Costs._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 " FOREIGN KEY (" + KasebContract.Costs.COLUMN_COST_TYPE_ID + ") REFERENCES "  +
@@ -126,10 +148,13 @@ public class KasebDbHelper extends SQLiteOpenHelper {
                 KasebContract.Costs.COLUMN_DATE + " TEXT NOT NULL,"+
                 KasebContract.Costs.COLUMN_DESCRIPTION + " TEXT"+
                 ");";
-        //create cost types table
+        //endregion
+
+        //region 13 create cost-types table
         final String CREATE_COST_TYPES_TABLE = "CREATE TABLE " + KasebContract.CostTypes.TABLE_NAME + "(" +
                 KasebContract.CostTypes._ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 KasebContract.CostTypes.COLUMN_COST_TYPE_POINTER+ " INTEGER NOT NULL" + ");";
+        //endregion
     }
 
     @Override
