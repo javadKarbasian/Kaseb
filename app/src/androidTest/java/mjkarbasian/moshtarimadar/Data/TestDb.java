@@ -423,6 +423,8 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //region Test tables
+    //1
     public void testStateTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -451,6 +453,7 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //2
     public void testCostTypesTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -479,6 +482,7 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //3
     public void testCustomersTable() {
         long StateRowId = insertStateTable();
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
@@ -508,6 +512,7 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //4
     public void testCostTable() {
         long CostTypesRowId = insertCostTypesTable();
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
@@ -537,6 +542,7 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //5
     public void testPaymentMethodsTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -565,6 +571,7 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //6
     public void testTaxTypesTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -593,6 +600,7 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //7
     public void testProductsTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -621,6 +629,7 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //8
     public void testSalesTable() {
         long StateRowId = insertStateTable();
         long CustomersRowId = insertCustomersTable(StateRowId);
@@ -651,6 +660,177 @@ public class TestDb extends AndroidTestCase {
         db.close();
     }
 
+    //9
+    public void testDetailSaleTable() {
+        long StateRowId = insertStateTable();
+        long CustomersRowId = insertCustomersTable(StateRowId);
+        long SalesRowId = insertSalesTable(CustomersRowId);
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createDetailSaleValues(SalesRowId);
+        long DetailSaleRowId = db.insert(KasebContract.DetailSale.TABLE_NAME, null, testValues);
+        assertTrue(DetailSaleRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.DetailSale.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -DetailSale table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -DetailSale table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.DetailSale.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -DetailSale table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    //10
+    public void testDetailSalePaymentsTable() {
+        long StateRowId = insertStateTable();
+        long CustomersRowId = insertCustomersTable(StateRowId);
+        long SalesRowId = insertSalesTable(CustomersRowId);
+        long DetailSaleRowId = insertDetailSaleTable(SalesRowId);
+        long PaymentMethodsRowId = insertPaymentMethodsTable();
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createDetailSalePaymentsValues(DetailSaleRowId, PaymentMethodsRowId);
+        long DetailSalePaymentsRowId = db.insert(KasebContract.DetailSalePayments.TABLE_NAME, null, testValues);
+        assertTrue(DetailSalePaymentsRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.DetailSalePayments.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -DetailSalePayments table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -DetailSalePayments table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.DetailSalePayments.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -DetailSalePayments table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    //11
+    public void testProductHistoryTable() {
+        long ProductsRowId = insertProductsTable();
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createProductHistoryValues(ProductsRowId);
+        long ProductHistoryRowId = db.insert(KasebContract.ProductHistory.TABLE_NAME, null, testValues);
+        assertTrue(ProductHistoryRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.ProductHistory.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -ProductHistory table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -ProductHistory table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.ProductHistory.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -ProductHistory table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    //12
+    public void testDetailSaleTaxesTable() {
+
+        long StateRowId = insertStateTable();
+        long CustomersRowId = insertCustomersTable(StateRowId);
+        long SalesRowId = insertSalesTable(CustomersRowId);
+        long DetailSaleRowId = insertDetailSaleTable(SalesRowId);
+        long TaxTypesRowId = insertTaxTypesTable();
+
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createDetailSaleTaxesValues(DetailSaleRowId, TaxTypesRowId);
+        long DetailSaleTaxesRowId = db.insert(KasebContract.DetailSaleTaxes.TABLE_NAME, null, testValues);
+        assertTrue(DetailSaleTaxesRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.DetailSaleTaxes.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -DetailSaleTaxes table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -DetailSaleTaxes table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.DetailSaleTaxes.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -DetailSaleTaxes table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+
+    //13
+    public void testDetailSaleProductsTable() {
+
+        long StateRowId = insertStateTable();
+        long CustomersRowId = insertCustomersTable(StateRowId);
+        long SalesRowId = insertSalesTable(CustomersRowId);
+        long DetailSaleRowId = insertDetailSaleTable(SalesRowId);
+        long ProductsRowId = insertProductsTable();
+
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createDetailSaleProductsValues(ProductsRowId, DetailSaleRowId);
+        long DetailSaleProductsRowId = db.insert(KasebContract.DetailSaleProducts.TABLE_NAME, null, testValues);
+        assertTrue(DetailSaleProductsRowId != -1);
+
+        Cursor cursor = db.query(KasebContract.DetailSaleProducts.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+        assertTrue("Error: No Records returned from -DetailSaleProducts table- query", cursor.moveToFirst());
+
+        TestUtilities.validateCurrentRecord("Error: -DetailSaleProducts table- Query Validation Failed"
+                , cursor
+                , testValues
+                , KasebContract.DetailSaleProducts.TABLE_NAME);
+
+        assertFalse("Error: More than one record returned from -DetailSaleProducts table- query",
+                cursor.moveToNext());
+
+        cursor.close();
+        db.close();
+    }
+    //endregion
+
+    //region Insert to tables
+    //1
     public long insertStateTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -659,6 +839,7 @@ public class TestDb extends AndroidTestCase {
         return StateRowId;
     }
 
+    //2
     public long insertCostTypesTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -667,6 +848,7 @@ public class TestDb extends AndroidTestCase {
         return CostTypesRowId;
     }
 
+    //3
     public long insertPaymentMethodsTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -675,6 +857,7 @@ public class TestDb extends AndroidTestCase {
         return PaymentMethodsRowId;
     }
 
+    //4
     public long insertTaxTypesTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -683,6 +866,7 @@ public class TestDb extends AndroidTestCase {
         return TaxTypesRowId;
     }
 
+    //5
     public long insertProductsTable() {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -691,6 +875,16 @@ public class TestDb extends AndroidTestCase {
         return ProductsRowId;
     }
 
+    //6
+    public long insertSalesTable(long CustomersRowId) {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createSalesValues(CustomersRowId);
+        long SalesRowId = db.insert(KasebContract.Sales.TABLE_NAME, null, testValues);
+        return SalesRowId;
+    }
+
+    //7
     public long insertCustomersTable(long StateRowId) {
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -698,6 +892,16 @@ public class TestDb extends AndroidTestCase {
         long CustomersRowId = db.insert(KasebContract.Customers.TABLE_NAME, null, testValues);
         return CustomersRowId;
     }
+
+    //8
+    public long insertDetailSaleTable(long SalesRowId) {
+        KasebDbHelper dbHelper = new KasebDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues testValues = TestUtilities.createDetailSaleValues(SalesRowId);
+        long DetailSaleRowId = db.insert(KasebContract.DetailSale.TABLE_NAME, null, testValues);
+        return DetailSaleRowId;
+    }
+    //endregion
 }
 
 

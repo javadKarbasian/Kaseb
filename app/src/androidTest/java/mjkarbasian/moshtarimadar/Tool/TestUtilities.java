@@ -78,26 +78,37 @@ public class TestUtilities extends AndroidTestCase {
     //endregion
 
     //region 7 ProductHistory table createValues
-    public static ContentValues createProductHistoryValues() {
-        ContentValues StateValues = new ContentValues();
-        StateValues.put(KasebContract.State.COLUMN_STATE_POINTER, sample_number++);
-        return StateValues;
+    public static ContentValues createProductHistoryValues(long ProductsRowId) {
+        ContentValues ProductHistoryValues = new ContentValues();
+        ProductHistoryValues.put(KasebContract.ProductHistory.COLUMN_PRODUCT_ID, ProductsRowId);
+        ProductHistoryValues.put(KasebContract.ProductHistory.COLUMN_COST, sample_number++);
+        ProductHistoryValues.put(KasebContract.ProductHistory.COLUMN_DATE, sample_text+(sample_number++));
+        ProductHistoryValues.put(KasebContract.ProductHistory.COLUMN_QUANTITY, sample_number++);
+        ProductHistoryValues.put(KasebContract.ProductHistory.COLUMN_SALE_PRICE, sample_number++);
+
+        return ProductHistoryValues;
     }
     //endregion
 
     //region 8 DetailSaleTaxes table createValues
-    public static ContentValues createDetailSaleTaxesValues() {
-        ContentValues StateValues = new ContentValues();
-        StateValues.put(KasebContract.State.COLUMN_STATE_POINTER, sample_number++);
-        return StateValues;
+    public static ContentValues createDetailSaleTaxesValues(long DetailSaleRowId, long TaxtypesRowId) {
+        ContentValues DetailSaleTaxesValues = new ContentValues();
+        DetailSaleTaxesValues.put(KasebContract.DetailSaleTaxes.COLUMN_DETAIL_SALE_ID, DetailSaleRowId);
+        DetailSaleTaxesValues.put(KasebContract.DetailSaleTaxes.COLUMN_TAX_TYPE_ID, TaxtypesRowId);
+        DetailSaleTaxesValues.put(KasebContract.DetailSaleTaxes.COLUMN_AMOUNT, sample_number++);
+        return DetailSaleTaxesValues;
     }
     //endregion
 
     //region 9 DetailSaleProducts table createValues
-    public static ContentValues createDetailSaleProductsValues() {
-        ContentValues StateValues = new ContentValues();
-        StateValues.put(KasebContract.State.COLUMN_STATE_POINTER, sample_number++);
-        return StateValues;
+    public static ContentValues createDetailSaleProductsValues(long ProductsRowId, long DetailSaleRowId) {
+        ContentValues DetailSaleProductsValues = new ContentValues();
+        DetailSaleProductsValues.put(KasebContract.DetailSaleProducts.COLUMN_PRODUCT_ID, ProductsRowId);
+        DetailSaleProductsValues.put(KasebContract.DetailSaleProducts.COLUMN_DETAIL_SALE_ID, DetailSaleRowId);
+        DetailSaleProductsValues.put(KasebContract.DetailSaleProducts.COLUMN_QUANTITY, sample_number++);
+        DetailSaleProductsValues.put(KasebContract.DetailSaleProducts.COLUMN_AMOUNT, sample_number++);
+
+        return DetailSaleProductsValues;
     }
     //endregion
 
@@ -110,9 +121,9 @@ public class TestUtilities extends AndroidTestCase {
     //endregion
 
     //region 11 DetailSale table createValues
-    public static ContentValues createDetailSaleValues(long DetailSaleRowId) {
+    public static ContentValues createDetailSaleValues(long SalesRowId) {
         ContentValues DetailSaleValues = new ContentValues();
-        DetailSaleValues.put(KasebContract.DetailSale.COLUMN_SALE_ID, sample_number++);
+        DetailSaleValues.put(KasebContract.DetailSale.COLUMN_SALE_ID, SalesRowId);
         DetailSaleValues.put(KasebContract.DetailSale.COLUMN_DATE, sample_text+(sample_number++));
         DetailSaleValues.put(KasebContract.DetailSale.COLUMN_ITEMS_NUMBER, sample_number++);
         DetailSaleValues.put(KasebContract.DetailSale.COLUMN_SUB_TOTAL, sample_number++);
@@ -126,10 +137,14 @@ public class TestUtilities extends AndroidTestCase {
     //endregion
 
     //region 12 DetailSalePayments table createValues
-    public static ContentValues createDetailSalePaymentsValues() {
-        ContentValues StateValues = new ContentValues();
-        StateValues.put(KasebContract.State.COLUMN_STATE_POINTER, sample_number++);
-        return StateValues;
+    public static ContentValues createDetailSalePaymentsValues(long DetailSaleRowId, long PaymentMethodsRowId) {
+        ContentValues DetailSalePaymentsValues = new ContentValues();
+        DetailSalePaymentsValues.put(KasebContract.DetailSalePayments.COLUMN_DETAIL_SALE_ID, DetailSaleRowId);
+        DetailSalePaymentsValues.put(KasebContract.DetailSalePayments.COLUMN_PAYMENT_METHOD_ID, PaymentMethodsRowId);
+        DetailSalePaymentsValues.put(KasebContract.DetailSalePayments.COLUMN_DUE_DATE, sample_text+(sample_number++));
+        DetailSalePaymentsValues.put(KasebContract.DetailSalePayments.COLUMN_AMOUNT, sample_number++);
+
+        return DetailSalePaymentsValues;
     }
     //endregion
 
