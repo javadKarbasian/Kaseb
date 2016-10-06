@@ -27,33 +27,43 @@ public class KasebContract {
     public static final String PATH_STATE = "state";
 
     //List of out uri`s are :
-    // 1)content://AUTHORITY/customers
-    // 2)content://AUTHORITY/customers/id
-    // 3)content://AUTHORITY/sales
-    // 3)content://AUTHORITY/sales/id
-    // 4)content://AUTHORITY/detail_sale/id
-    // 5)content://AUTHORITY/products
-    // 6)content://AUTHORITY/products/id
-    // 7)content://AUTHORITY/products_history
-    // 7)content://AUTHORITY/products_history/id
-    // 8)content://AUTHORITY/costs
-    // 9)content://AUTHORITY/costs/id
-    // 10)content://AUTHORITY/cost_types
-    // 11)content://AUTHORITY/cost_types/id
-    // 12)content://AUTHORITY/payment_methods
-    // 13)content://AUTHORITY/payment_methods/id
-    // 14)content://AUTHORITY/tax_types
-    // 15)content://AUTHORITY/tax_types/id
-    // 16)content://AUTHORITY/detail_sale_products
-    // 17)content://AUTHORITY/detail_sale_products/id
-    // 18)content://AUTHORITY/detail_sale_payments
-    // 19)content://AUTHORITY/detail_sale_payments/id
-    // 20)content://AUTHORITY/detail_sale_tax
-    // 21)content://AUTHORITY/detail_sale_tax/id
-    // 22)content://AUTHORITY/state
-    // 23)content://AUTHORITY/state/id
+    // 1)content://AUTHORITY/customers---Dir
+    // 2)content://AUTHORITY/customers/id---Item
+    // 3)content://AUTHORITY/sales---Dir
+    // 3)content://AUTHORITY/sales/id---item
+    // 4)content://AUTHORITY/detail_sale/id---item
+    // 5)content://AUTHORITY/products---Dir
+    // 6)content://AUTHORITY/products/id---item
+    // 7)content://AUTHORITY/products_history----Dir
+    // 7)content://AUTHORITY/products_history/id---item
+    // 8)content://AUTHORITY/costs---Dir
+    // 9)content://AUTHORITY/costs/id---item
+    // 10)content://AUTHORITY/cost_types---Dir
+    // 11)content://AUTHORITY/cost_types/id----item
+    // 12)content://AUTHORITY/payment_methods---Dir
+    // 13)content://AUTHORITY/payment_methods/id---Item
+    // 14)content://AUTHORITY/tax_types---Dir
+    // 15)content://AUTHORITY/tax_types/id---Item
+    // 16)content://AUTHORITY/detail_sale_products---Dir
+    // 17)content://AUTHORITY/detail_sale_products/id---Item
+    // 18)content://AUTHORITY/detail_sale_payments---Dir
+    // 19)content://AUTHORITY/detail_sale_payments/id---Item
+    // 20)content://AUTHORITY/detail_sale_tax---Dir
+    // 21)content://AUTHORITY/detail_sale_tax/id---Item
+    // 22)content://AUTHORITY/state---Dir
+    // 23)content://AUTHORITY/state/id---item
     //new uris
-    //24)content://AUTHORITY/costs?costTypeID=type
+    //24)contents:////AUTHORITY/customers?state_id=stateId---Dir
+    //25)content://AUTHORITY/Sales?customer_Id =customerId---Dir
+    //26)content://AUTHORITY/DetailSale?sale_id =saleId---Dir which is one item
+    //27)content://AUTHORITY/DetailSale?is_Balanced=isBalance---Dir
+    //28)content://AUTHORITY/DetailSalePayments?detail_sale_id=detailSaleId---Dir
+    //28')content://AUTHORITY/DetailSalePayments?payment_method_id=paymentId---Dir
+    //29)content://AUTHORITY/DetailSaleProducts?detail_sale_id=detailSaleId---Dir
+    //30)content://authority/detail_sale_taxes?detail_sale_id=detailSaleId---Dir
+    //31)content://authority/detail_sale_taxes?tax_type=taxTypeId---Dir
+    //32)content://AUTHORITY/product_history?product_id=productId---Dir
+    //33)content://AUTHORITY/costs?costTypeID=type---Dir
 
     public static final class Customers implements BaseColumns {
 
@@ -85,6 +95,10 @@ public class KasebContract {
         //Defining Uri Maker functions : content://AUTHORITY/customers/id
         public static Uri buildCustomerUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        //query customers by their group : contents:////AUTHORITY/customers?state_id=stateId
+        public static Uri stateCustomer(long stateId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_STATE_ID, String.valueOf(stateId)).build();
+        }
     }
 
     public static final class State implements BaseColumns {
@@ -121,9 +135,13 @@ public class KasebContract {
         public static final String COLUMN_IS_DELETED = "is_deleted";
 
 
-        //Defining Uri Maker functions : content://AUTHORITY/SaleEntry/id
+        //Defining Uri Maker functions : content://AUTHORITY/Sales/id
         public static Uri buildSalesUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        //defining uri for sale of a customer : content://AUTHORITY/Sales?customer_Id =customerId
+        public static Uri customerSales(long customerId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_CUSTOMER_ID, String.valueOf(customerId)).build();
+        }
     }
 
     public static final class DetailSale implements BaseColumns {
@@ -137,7 +155,7 @@ public class KasebContract {
 
         //Defining columns
         public static final String TABLE_NAME = "detail_sale";
-        public static final String COLUMN_SALE_ID = "customer_id";
+        public static final String COLUMN_SALE_ID = "sale_id";
         public static final String COLUMN_DATE = "date";
         public static final String COLUMN_ITEMS_NUMBER = "items_number";
         public static final String COLUMN_SUB_TOTAL = "sub_total";
@@ -150,6 +168,14 @@ public class KasebContract {
         //Defining Uri Maker functions : content://AUTHORITY/DetailSale/id
         public static Uri buildDetailSaleUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        // Defining Uri for DetailSaleOf a Sale cursor dir??? : content://AUTHORITY/DetailSale?sale_id =saleId
+        public static Uri saleDetailSale(long saleId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_SALE_ID, String.valueOf(saleId)).build();
+        }
+        //Defineing Uri for DetailSales Which are balance or not,cursor dir Content://AUTHORITY/DetailSale?is_Balanced = isBalance
+        public static Uri isBalanceDetailSale(long id,Boolean isBalance){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_IS_BALANCED, String.valueOf(isBalance)).build();
+        }
     }
 
     public static final class DetailSalePayments implements BaseColumns {
@@ -171,6 +197,14 @@ public class KasebContract {
         //Defining Uri Maker functions : content://AUTHORITY/DetailSalePayments/id
         public static Uri buildDetailSalePaymentsUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        //Defining Uri for products of a detailsale cursor_dir: content://AUTHORITY/DetailSalePayments? detail_sale_id=detailSaleid
+        public static Uri paymentOfDetailSale(long detailSaleId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_DETAIL_SALE_ID, String.valueOf(detailSaleId)).build();
+        }
+        //Define uri for payment by type : content://AUTHORITY/DetailSalePayments?payment_method_id=paymentId
+        public static Uri paymentsByMethod(long paymentMethodId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_PAYMENT_METHOD_ID, String.valueOf(paymentMethodId)).build();
+        }
     }
 
     public static final class DetailSaleProducts implements BaseColumns {
@@ -189,9 +223,13 @@ public class KasebContract {
         public static final String COLUMN_QUANTITY = "quantity";
         public static final String COLUMN_AMOUNT = "amount";
 
-        //Defining Uri Maker functions : content://AUTHORITY/DetailSaleProducts/id
+        //Defining Uri Maker functions cursor_dir : content://AUTHORITY/DetailSaleProducts/id
         public static Uri buildDetailSaleProducts(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        //Defining Uri for products of a detailsale cursor_dir: content://AUTHORITY/DetailSaleProducts?detail_sale_id=detailSaleId
+        public static Uri productsOfDetailSale(long detailSaleId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_DETAIL_SALE_ID, String.valueOf(detailSaleId)).build();
+        }
     }
 
     public static final class DetailSaleTaxes implements BaseColumns {
@@ -212,6 +250,14 @@ public class KasebContract {
         //Defining Uri Maker functions : content://AUTHORITY/DetailSaleTaxes/id
         public static Uri buildDetailSaleTaxesUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        //Uri for taxes in detail factor: content://authority/detail_sale_taxes?detail_sale_id=detailSaleId
+        public static Uri taxOfDetailSale(long detailSaleId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_DETAIL_SALE_ID, String.valueOf(detailSaleId)).build();
+        }
+        //Uri for taxes by type : content://authority/detail_sale_taxes?tax_type=type
+        public static Uri taxOfDetailSaleByType(long taxTypeId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_TAX_TYPE_ID, String.valueOf(taxTypeId)).build();
+        }
     }
 
     public static final class PaymentMethods implements BaseColumns {
@@ -270,9 +316,7 @@ public class KasebContract {
         //Defining Uri Maker functions : content://AUTHORITY/products/id
         public static Uri buildProductsUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
-        public static Uri detailSaleProducts(long id,long detailSaleId){
-            return null;
-        }
+
     }
 
     public static final class ProductHistory implements BaseColumns {
@@ -295,6 +339,10 @@ public class KasebContract {
         //Defining Uri Maker functions : content://AUTHORITY/product_history/id
         public static Uri buildProductHistoryUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
+        //Definig uri for  query of specific product histories content://AUTHORITY/product_history?product_id=productId
+        public static Uri aProductHistory(long productId){
+            return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_PRODUCT_ID, String.valueOf(productId)).build();
+        }
     }
 
     public static final class Costs implements BaseColumns {
@@ -319,7 +367,7 @@ public class KasebContract {
         //Defining Uri Maker functions : content://AUTHORITY/DetailSale/id
         public static Uri buildCostsUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);}
-        //define Uri to query cost by cost types
+        //define Uri to query cost by cost types content://AUTHORITY/DetailSale?cost_type=type
         public static Uri costsByType(long costTypeID,String type){
             return CONTENT_URI.buildUpon().appendQueryParameter(COLUMN_COST_TYPE_ID, type).build();
         }
