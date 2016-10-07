@@ -29,7 +29,7 @@ public class TestUtilities extends AndroidTestCase {
         ContentValues SalesValues = new ContentValues();
         SalesValues.put(KasebContract.Sales.COLUMN_CUSTOMER_ID, CustomersRowId);
         SalesValues.put(KasebContract.Sales.COLUMN_SALE_CODE, sample_text+(sample_number++));
-        SalesValues.put(KasebContract.Sales.COLUMN_IS_DELETED, false);
+        SalesValues.put(KasebContract.Sales.COLUMN_IS_DELETED, 0);
 
         return SalesValues;
     }
@@ -131,7 +131,7 @@ public class TestUtilities extends AndroidTestCase {
         DetailSaleValues.put(KasebContract.DetailSale.COLUMN_TOTAL_DISCOUNT, sample_number++);
         DetailSaleValues.put(KasebContract.DetailSale.COLUMN_TOTAL_DUE, sample_number++);
         DetailSaleValues.put(KasebContract.DetailSale.COLUMN_TOTAL_PAID, sample_number++);
-        DetailSaleValues.put(KasebContract.DetailSale.COLUMN_IS_BALANCED, false);
+        DetailSaleValues.put(KasebContract.DetailSale.COLUMN_IS_BALANCED, 0);
         return DetailSaleValues;
     }
     //endregion
@@ -158,7 +158,7 @@ public class TestUtilities extends AndroidTestCase {
         CustomersValues.put(KasebContract.Customers.COLUMN_STATE_ID, StateRowId);
         CustomersValues.put(KasebContract.Customers.COLUMN_PHONE_MOBILE, sample_text+(sample_number++));
         CustomersValues.put(KasebContract.Customers.COLUMN_DESCRIPTION, sample_text+(sample_number++));
-        CustomersValues.put(KasebContract.Customers.COLUMN_IS_DELETED, false);
+        CustomersValues.put(KasebContract.Customers.COLUMN_IS_DELETED, 0);
         CustomersValues.put(KasebContract.Customers.COLUMN_EMAIL, sample_text+(sample_number++));
         CustomersValues.put(KasebContract.Customers.COLUMN_PHONE_WORK, sample_text+(sample_number++));
         CustomersValues.put(KasebContract.Customers.COLUMN_PHONE_OTHER, sample_text+(sample_number++));
@@ -181,9 +181,10 @@ public class TestUtilities extends AndroidTestCase {
             assertFalse("Column '" + columnName + "' not found. in -" + tablename + "table- " + error, idx == -1);
 
             String expectedValue = entry.getValue().toString();
+            if(valueCursor.getType(idx)!=Cursor.FIELD_TYPE_BLOB){
             assertEquals("Value '" + entry.getValue().toString() +
                     "' did not match the expected value '" +
-                    expectedValue + "'. " + error + "in -" + tablename + "table- " , expectedValue, valueCursor.getString(idx));
+                    expectedValue + "'. " + error + "in -" + tablename + "table- " , expectedValue,valueCursor.getString(idx));}
         }
     }
 }

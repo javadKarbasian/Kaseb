@@ -499,7 +499,7 @@ public class TestDb extends AndroidTestCase {
                 null,
                 null);
         assertTrue("Error: No Records returned from -Customers table- query", cursor.moveToFirst());
-        Log.d(LOG_TAG,cursor.toString());
+        Log.d(LOG_TAG,"this is my log " + cursor.toString());
         TestUtilities.validateCurrentRecord("Error: -Customers table- Query Validation Failed"
                 , cursor
                 , testValues
