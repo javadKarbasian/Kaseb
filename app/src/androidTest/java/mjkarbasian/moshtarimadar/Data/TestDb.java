@@ -499,7 +499,7 @@ public class TestDb extends AndroidTestCase {
                 null,
                 null);
         assertTrue("Error: No Records returned from -Customers table- query", cursor.moveToFirst());
-
+        Log.d(LOG_TAG,cursor.toString());
         TestUtilities.validateCurrentRecord("Error: -Customers table- Query Validation Failed"
                 , cursor
                 , testValues
@@ -662,14 +662,14 @@ public class TestDb extends AndroidTestCase {
 
     //9
     public void testDetailSaleTable() {
-        long StateRowId = insertStateTable();
-        long CustomersRowId = insertCustomersTable(StateRowId);
-        long SalesRowId = insertSalesTable(CustomersRowId);
+        long stateRowId = insertStateTable();
+        long customersRowId = insertCustomersTable(stateRowId);
+        long salesRowId = insertSalesTable(customersRowId);
         KasebDbHelper dbHelper = new KasebDbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues testValues = TestUtilities.createDetailSaleValues(SalesRowId);
-        long DetailSaleRowId = db.insert(KasebContract.DetailSale.TABLE_NAME, null, testValues);
-        assertTrue(DetailSaleRowId != -1);
+        ContentValues testValues = TestUtilities.createDetailSaleValues(salesRowId);
+        long detailSaleRowId = db.insert(KasebContract.DetailSale.TABLE_NAME, null, testValues);
+        assertTrue(detailSaleRowId != -1);
 
         Cursor cursor = db.query(KasebContract.DetailSale.TABLE_NAME,
                 null,
